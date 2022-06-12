@@ -7,24 +7,8 @@
 
 import SwiftUI
 
-//struct ContentView: View {
-//    var body: some View {
-//        Checkerboard(rows: 16, columns: 16)
-//            .fill(.red)
-//            .frame(width: 350, height: 350)
-//    }
-//}
-
-private var symbols = ["keyboard", "hifispeaker.fill", "printer.fill", "tv.fill", "desktopcomputer", "headphones", "tv.music.note", "mic", "plus.bubble", "video"]
-
-private var colors: [Color] = [.yellow, .purple, .green]
-
-private var gridItemLayout = [GridItem(.flexible()), GridItem(.flexible()), GridItem(.flexible())]
-
-
 
 struct ContentView: View {
-    let data = (1...100).map { "\($0)" }
     let first12 = (1...12).map { "\($0)" }
     let second12 = (13...24).map { "\($0)" }
     let third12 = (25...36).map { "\($0)" }
@@ -33,165 +17,224 @@ struct ContentView: View {
         GridItem(.adaptive(minimum: 40))
     ]
     
-    
-    //var rouletteCells: [Any] = [View1.self, View2.self]
-    
     var body: some View {
         VStack {
-            HStack {
-                VStack {
+            Spacer()
+            HStack(spacing: 0.0) {
+                VStack(spacing: 0.0) {
                     Spacer()
-                    Text("0").frame(width:40, height: 40, alignment: .center)
+                    Text("0").frame(width:50, height: 40, alignment: .center)
                         .border(.black, width: 3.0)
                         .background(.green)
-                        .padding([.leading])
-                    Text("00").frame(width:40, height: 40, alignment: .center)
+                        .foregroundColor(.white)
+                        .font(.title2)
+                    Text("00").frame(width:50, height: 40, alignment: .center)
                         .border(.black, width: 3.0)
                         .background(.green)
-                        .padding([.leading])
+                        .foregroundColor(.white)
+                        .font(.title2)
                     Spacer()
                     Spacer()
                     Spacer()
-                }
+                    Spacer()
+                }.frame(maxWidth: 50, maxHeight: 236)
+                
                 ScrollView {
                     VStack {
-                        LazyVGrid(columns: columns, spacing: 20) {
+                        LazyVGrid(columns: columns, spacing: 0) {
                             ForEach(first12, id: \.self) { item in
                                 Button {
                                     print("Button pressed")
+                                    
                                 } label: {
                                     Text(item)
-                                }.frame(width:40, height: 40, alignment: .center)
+                                        .fontWeight(.light)
+                                        .foregroundColor(.white)
+                                        .font(.title2)
+                                }.frame(width:50, height: 40, alignment: .center)
                                     .border(.black, width: 3.0)
                                     .background(.green)
                                     .tag(Int(item))
                             }
-                        }.padding(.vertical)
-                        .background(.green)
-                        Text("1st 12").frame(width:200, height: 80)
-                            .padding([.trailing])
+                        }
+                        .background(Color(red: 0.0, green: 0.556, blue: 0.326))
+                        
+                        Text("1st 12")
+                            .frame(width:208.0, height: 50)
                             .border(.black, width: 3.0)
                             .background(.green)
+                            .foregroundColor(.white)
                             .font(.title)
-                    }.padding([.leading, .trailing])
+                        HStack {
+                            Text("1to18")
+                                .frame(width:100, height: 50, alignment: .center)
+                                .border(.black, width: 3.0)
+                                .background(.green)
+                                .font(.title2)
+                                .foregroundColor(.white)
+                            Text("EVEN")
+                                .frame(width:100, height: 50, alignment: .center)
+                                .border(.black, width: 3.0)
+                                .background(.green)
+                                .font(.title2)
+                                .foregroundColor(.white)
+                        }
+                    }
                 }
-                .frame(maxWidth: 230, maxHeight: 320)
+                .frame(maxWidth: 208, maxHeight: 236)
                 .border(.black, width: 3.0)
                 
                 
                 ScrollView {
                     VStack {
-                        LazyVGrid(columns: columns, spacing: 20) {
-                            ForEach(second12, id: \.self) { item in
+                        LazyVGrid(columns: columns, spacing: 0) {
+                            ForEach(first12, id: \.self) { item in
                                 Button {
                                     print("Button pressed")
                                 } label: {
                                     Text(item)
-                                }.frame(width:40, height: 40, alignment: .center)
+                                        .foregroundColor(.white)
+                                        .font(.title2)
+                                }
+                                .frame(width:50, height: 40, alignment: .center)
                                     .border(.black, width: 3.0)
                                     .background(.green)
                                     .tag(Int(item))
                             }
-                        }.padding(.vertical)
-                        .background(.green)
-                        Text("2nd 12").frame(width:200, height: 80)
-                            .padding([.trailing])
+                        }
+                        .background(Color(red: 0.0, green: 0.556, blue: 0.326))
+                        
+                        Text("2nd 12")
+                            .frame(width:208.0, height: 50)
                             .border(.black, width: 3.0)
                             .background(.green)
                             .font(.title)
-                    }.padding([.leading, .trailing])
+                            .foregroundColor(.white)
+                        HStack {
+                            Text("RED")
+                                .frame(width:100, height: 50, alignment: .center)
+                                .border(.black, width: 3.0)
+                                .background(.green)
+                                .foregroundColor(.white)
+                                .font(.title2)
+                            Text("BLACK")
+                                .frame(width:100, height: 50, alignment: .center)
+                                .border(.black, width: 3.0)
+                                .background(.green)
+                                .foregroundColor(.white)
+                                .font(.title2)
+                        }
+                    }
                 }
-                .frame(maxWidth: 230, maxHeight: 320)
-                .border(.red, width: 3.0)
+                .frame(maxWidth: 208, maxHeight: 236)
+                .border(.black, width: 3.0)
                 
                 ScrollView {
                     VStack {
-                        LazyVGrid(columns: columns, spacing: 20) {
+                        LazyVGrid(columns: columns, spacing: 0) {
                             ForEach(third12, id: \.self) { item in
                                 Button {
                                     print("Button pressed")
                                 } label: {
                                     Text(item)
-                                }.frame(width:40, height: 40, alignment: .center)
+                                        .foregroundColor(.white)
+                                        .font(.title2)
+                                }.frame(width:50, height: 40, alignment: .center)
                                     .border(.black, width: 3.0)
                                     .background(.green)
                                     .tag(Int(item))
                             }
-                        }.padding(.vertical)
-                        .background(.green)
-                        Text("3rd 12").frame(width:200, height: 80)
-                            .padding([.trailing])
+                        }
+                        .background(Color(red: 0.0, green: 0.556, blue: 0.326))
+                        
+                        Text("3rd 12")
+                            .frame(width:208.0, height: 50)
                             .border(.black, width: 3.0)
                             .background(.green)
                             .font(.title)
-                    }.padding([.leading, .trailing])
+                            .foregroundColor(.white)
+                        HStack {
+                            Text("ODD")
+                                .frame(width:100, height: 50, alignment: .center)
+                                .border(.black, width: 3.0)
+                                .background(.green)
+                                .foregroundColor(.white)
+                                .font(.title2)
+                            Text("19to36")
+                                .frame(width:100, height: 50, alignment: .center)
+                                .border(.black, width: 3.0)
+                                .background(.green)
+                                .foregroundColor(.white)
+                                .font(.title2)
+                        }
+                    }
                 }
-                .frame(maxWidth: 230, maxHeight: 320)
-                .border(.red, width: 3.0)
+                .frame(maxWidth: 208, maxHeight: 236)
+                .border(.black, width: 3.0)
                 
                 
-                
-                VStack {
+                VStack(alignment: .center, spacing: 0.0) {
                     
                     Text("2to1")
-                        .frame(width: 50, height: 10, alignment: .center)
-                        .padding(.horizontal)
-                        .padding(.vertical)
+                        .frame(width: 80, height: 40, alignment: .center)
                         .border(.black, width: 3.0)
-                    Spacer()
+                        .foregroundColor(.white)
+                        .font(.title2)
+                        .background(.green)
+                    
                     Text("2to1")
-                        .frame(width: 50, height: 10, alignment: .trailing)
-                        .padding(.horizontal).padding(.vertical)
+                        .frame(width: 80, height: 40, alignment: .center)
                         .border(.black, width: 3.0)
-                    Spacer()
+                        .foregroundColor(.white)
+                        .font(.title2)
+                        .background(.green)
+                    
                     Text("2to1")
-                        .frame(width: 50, height: 10, alignment: .trailing)
-                        .padding(.horizontal).padding(.vertical)
+                        .frame(width: 80, height: 40, alignment: .center)
                         .border(.black, width: 3.0)
+                        .foregroundColor(.white)
+                        .font(.title2)
+                        .background(.green)
+
                     Spacer()
                     Spacer()
                     Spacer()
                     Spacer()
                     Spacer()
-                }.frame(maxWidth: 100, maxHeight: 280)
+                }.padding(0.0).frame(maxWidth: 80, maxHeight: 236)
                 
-            }.background(.green)
+            }.padding(0.0).frame(height: nil).background(Color(red: 0.0, green: 0.556, blue: 0.326))
             
             HStack {
-                Spacer()
                 Spacer()
                 Button("Reset") {
                     
                 }.frame(width: 150.0, height: 50.0, alignment: .center)
                     .border(.black, width: 3.0)
                     .background(.red)
-                    .padding(.horizontal).contentShape(Rectangle()).cornerRadius(5.0)
-                    
                     
                 Button("Undo") {
                     
                 }.frame(width: 150.0, height: 50.0, alignment: .center)
-                    .border(.black, width: 3.0).padding(.horizontal)
+                    .border(.black, width: 3.0)
                     .background(.green)
-                    .padding(.horizontal).contentShape(Rectangle()).cornerRadius(5.0)
                 
                 Button("Coloring") {
                     
                 }.frame(width: 150.0, height: 50.0, alignment: .center)
                     .border(.black, width: 3.0)
-                    .padding(.horizontal).contentShape(Rectangle()).cornerRadius(5.0)
                     .background(.gray)
                 
                 Button("Extra") {
                     
                 }.frame(width: 150.0, height: 50.0, alignment: .center)
-                    .border(.black, width: 3.0).padding(.horizontal).contentShape(Rectangle())
+                    .border(.black, width: 3.0)
                 Spacer()
                 Spacer()
-            }.background(.green)
+            }.background(Color(red: 0.0, green: 0.556, blue: 0.326))
             Spacer()
             
-        }.background(.green)
+        }.background(Color(red: 0.0, green: 0.556, blue: 0.326))
         
         
     }
@@ -202,6 +245,9 @@ struct ContentView: View {
 struct Previews_ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewDevice("iPhone 13 Pro Max")
+            .preferredColorScheme(.dark)
             .previewInterfaceOrientation(.landscapeRight)
+            .background(Color(red: 0.0, green: 0.556, blue: 0.326))
     }
 }
