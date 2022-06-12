@@ -30,7 +30,7 @@ struct ContentView: View {
     let third12 = (25...36).map { "\($0)" }
     
     let columns = [
-        GridItem(.adaptive(minimum: 50))
+        GridItem(.adaptive(minimum: 40))
     ]
     
     
@@ -40,46 +40,121 @@ struct ContentView: View {
         VStack {
             HStack {
                 VStack {
-                    Text("0").frame(width:50, height: 50, alignment: .center).border(.black, width: 3.0).background()
-                    Text("00").frame(width:50, height: 50, alignment: .center).border(.black, width: 3.0).background()
+                    Spacer()
+                    Text("0").frame(width:40, height: 40, alignment: .center)
+                        .border(.black, width: 3.0)
+                        .background(.green)
+                        .padding([.leading])
+                    Text("00").frame(width:40, height: 40, alignment: .center)
+                        .border(.black, width: 3.0)
+                        .background(.green)
+                        .padding([.leading])
+                    Spacer()
+                    Spacer()
+                    Spacer()
                 }
                 ScrollView {
-                    LazyVGrid(columns: columns, spacing: 60) {
-                        ForEach(first12, id: \.self) { item in
-                            Text(item).frame(width:55, height: 50, alignment: .center).border(.black, width: 3.0).background()
-                        }
-                    }.padding(.horizontal)
-                        .padding(.vertical)
+                    VStack {
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(first12, id: \.self) { item in
+                                Button {
+                                    print("Button pressed")
+                                } label: {
+                                    Text(item)
+                                }.frame(width:40, height: 40, alignment: .center)
+                                    .border(.black, width: 3.0)
+                                    .background(.green)
+                                    .tag(Int(item))
+                            }
+                        }.padding(.vertical)
                         .background(.green)
+                        Text("1st 12").frame(width:200, height: 80)
+                            .padding([.trailing])
+                            .border(.black, width: 3.0)
+                            .background(.green)
+                            .font(.title)
+                    }.padding([.leading, .trailing])
                 }
-                .frame(maxWidth: 300, maxHeight: 300)
-                .border(.green, width: 3.0).background()
+                .frame(maxWidth: 230, maxHeight: 320)
+                .border(.black, width: 3.0)
+                
                 
                 ScrollView {
-                    LazyVGrid(columns: columns, spacing: 60) {
-                        ForEach(second12, id: \.self) { item in
-                            Text(item).frame(width:55, height: 50, alignment: .center).border(.black, width: 3.0).background()
-                        }
-                    }.padding(.horizontal)
-                        .padding(.vertical)
+                    VStack {
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(second12, id: \.self) { item in
+                                Button {
+                                    print("Button pressed")
+                                } label: {
+                                    Text(item)
+                                }.frame(width:40, height: 40, alignment: .center)
+                                    .border(.black, width: 3.0)
+                                    .background(.green)
+                                    .tag(Int(item))
+                            }
+                        }.padding(.vertical)
                         .background(.green)
+                        Text("2nd 12").frame(width:200, height: 80)
+                            .padding([.trailing])
+                            .border(.black, width: 3.0)
+                            .background(.green)
+                            .font(.title)
+                    }.padding([.leading, .trailing])
                 }
-                .frame(maxWidth: 300, maxHeight: 300)
-                .border(.green, width: 3.0).background()
+                .frame(maxWidth: 230, maxHeight: 320)
+                .border(.red, width: 3.0)
                 
                 ScrollView {
-                    LazyVGrid(columns: columns, spacing: 60) {
-                        ForEach(third12, id: \.self) { item in
-                            Text(item).frame(width:55, height: 50, alignment: .center).border(.black, width: 3.0).background()
-                        }
-                    }.padding(.horizontal)
-                        .padding(.vertical)
+                    VStack {
+                        LazyVGrid(columns: columns, spacing: 20) {
+                            ForEach(third12, id: \.self) { item in
+                                Button {
+                                    print("Button pressed")
+                                } label: {
+                                    Text(item)
+                                }.frame(width:40, height: 40, alignment: .center)
+                                    .border(.black, width: 3.0)
+                                    .background(.green)
+                                    .tag(Int(item))
+                            }
+                        }.padding(.vertical)
                         .background(.green)
+                        Text("3rd 12").frame(width:200, height: 80)
+                            .padding([.trailing])
+                            .border(.black, width: 3.0)
+                            .background(.green)
+                            .font(.title)
+                    }.padding([.leading, .trailing])
                 }
-                .frame(maxWidth: 300, maxHeight: 300)
-                .border(.green, width: 3.0).background()
+                .frame(maxWidth: 230, maxHeight: 320)
+                .border(.red, width: 3.0)
                 
-                Text("<== 2 to 1")
+                
+                
+                VStack {
+                    
+                    Text("2to1")
+                        .frame(width: 50, height: 10, alignment: .center)
+                        .padding(.horizontal)
+                        .padding(.vertical)
+                        .border(.black, width: 3.0)
+                    Spacer()
+                    Text("2to1")
+                        .frame(width: 50, height: 10, alignment: .trailing)
+                        .padding(.horizontal).padding(.vertical)
+                        .border(.black, width: 3.0)
+                    Spacer()
+                    Text("2to1")
+                        .frame(width: 50, height: 10, alignment: .trailing)
+                        .padding(.horizontal).padding(.vertical)
+                        .border(.black, width: 3.0)
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                }.frame(maxWidth: 100, maxHeight: 280)
+                
             }.background(.green)
             
             HStack {
@@ -114,6 +189,7 @@ struct ContentView: View {
                 Spacer()
                 Spacer()
             }.background(.green)
+            Spacer()
             
         }.background(.green)
         
