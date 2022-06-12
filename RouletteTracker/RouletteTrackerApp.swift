@@ -15,3 +15,12 @@ struct RouletteTrackerApp: App {
         }
     }
 }
+
+struct Previews_RouletteTrackerApp_Previews: PreviewProvider {
+    static var previews: some View {
+        Group {
+            ContentView()
+                .previewInterfaceOrientation(.landscapeRight)
+        }
+    }
+}
