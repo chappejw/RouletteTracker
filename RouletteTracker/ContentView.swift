@@ -341,6 +341,8 @@ struct ContentView: View {
 struct Previews_ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewLayout(.device)
+            .environment(\.sizeCategory, .extraSmall)
             .previewDevice("iPhone 11")
             .preferredColorScheme(.dark)
             .previewInterfaceOrientation(.landscapeRight)
