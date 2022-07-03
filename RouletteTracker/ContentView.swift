@@ -33,6 +33,7 @@ struct RouletteNumber: View {
                         .frame(width: 48, height:58, alignment: .bottomTrailing)
                         .padding(0.0)
                         .foregroundColor(.white)
+                        
                 }
         }
     }
@@ -47,7 +48,7 @@ struct ContentView: View {
     
     let blacks: Set = ["1", "3", "5", "7", "9", "11", "13", "15", "17", "19", "21", "23", "25", "27", "29", "31", "33", "35"]
     let reds: Set = ["2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "22", "24", "26", "28", "30", "32", "34", "36"]
-    let greens: Set = [0, 00]
+    let greens: Set = ["0", "00"]
     
     let columns = [
         GridItem(.adaptive(minimum: 40))
@@ -59,8 +60,16 @@ struct ContentView: View {
             HStack(spacing: 0.0) {
                 VStack(spacing: 0.0) {
                     Spacer()
-                    RouletteNumber(numberTile: "0", numberCount: "0", background: .green)
-                    RouletteNumber(numberTile: "00", numberCount: "0", background: .green)
+                    Button {
+                        print("Button pressed")
+                    } label: {
+                        RouletteNumber(numberTile: "0", numberCount: "0", background: .green)
+                    }
+                    Button {
+                        print("Button pressed")
+                    } label: {
+                        RouletteNumber(numberTile: "00", numberCount: "0", background: .green)
+                    }
                     Spacer()
                     Spacer()
                     Spacer()
@@ -76,15 +85,8 @@ struct ContentView: View {
                             ForEach(first12, id: \.self) { item in
                                 Button {
                                     print("Button pressed")
-                                    
                                 } label: {
                                     RouletteNumber(numberTile: "\(item)", numberCount: "0", background: blacks.contains(item) ? .black : .red)
-                                        .background(blacks.contains(item) ? .black : .red)
-                                }
-                                .frame(width:45, height: 55, alignment: .center)
-                                .clipShape(Circle())
-                                .overlay {
-                                    Rectangle().stroke(.black, lineWidth: 1).frame(width: 55, height: 55, alignment: .center)
                                 }
                             }
                         }
@@ -108,6 +110,9 @@ struct ContentView: View {
                                 .background(Color(red: 0.0, green: 0.556, blue: 0.326))
                                 .font(.title2)
                                 .foregroundColor(.white)
+                                .overlay {
+                                    Text("0").frame(width: 100, height:60, alignment: .bottomTrailing)
+                                }
                             Text("EVEN")
                                 .fontWeight(.bold)
                                 .frame(width:100, height: 60, alignment: .center)
@@ -115,6 +120,9 @@ struct ContentView: View {
                                 .background(Color(red: 0.0, green: 0.556, blue: 0.326))
                                 .font(.title2)
                                 .foregroundColor(.white)
+                                .overlay {
+                                    Text("0").frame(width: 100, height:60, alignment: .bottomTrailing)
+                                }
                         }
                     }
                 }
@@ -129,12 +137,6 @@ struct ContentView: View {
                                     print("Button pressed")
                                 } label: {
                                     RouletteNumber(numberTile: "\(item)", numberCount: "0", background: blacks.contains(item) ? .black : .red)
-                                        .background(blacks.contains(item) ? .black : .red)
-                                }
-                                .frame(width:45, height: 55, alignment: .center)
-                                .clipShape(Circle())
-                                .overlay {
-                                    Rectangle().stroke(.black, lineWidth: 1).frame(width: 55, height: 55, alignment: .center)
                                 }
                             }
                         }
@@ -147,6 +149,9 @@ struct ContentView: View {
                             .background(Color(red: 0.0, green: 0.556, blue: 0.326))
                             .font(.title)
                             .foregroundColor(.white)
+                            .overlay {
+                                Text("0").frame(width: 208, height:60, alignment: .bottomTrailing)
+                            }
                         HStack {
                             Text("RED")
                                 .fontWeight(.bold)
@@ -155,6 +160,9 @@ struct ContentView: View {
                                 .background(Color(red: 0.0, green: 0.556, blue: 0.326))
                                 .foregroundColor(.red)
                                 .font(.title2)
+                                .overlay {
+                                    Text("0").frame(width: 100, height:60, alignment: .bottomTrailing)
+                                }
                                 
                             Text("BLACK")
                                 .fontWeight(.bold)
@@ -163,6 +171,9 @@ struct ContentView: View {
                                 .background(Color(red: 0.0, green: 0.556, blue: 0.326))
                                 .foregroundColor(.black)
                                 .font(.title2)
+                                .overlay {
+                                    Text("0").frame(width: 100, height:60, alignment: .bottomTrailing)
+                                }
                         }
                     }
                 }
@@ -177,12 +188,6 @@ struct ContentView: View {
                                     print("Button pressed")
                                 } label: {
                                     RouletteNumber(numberTile: "\(item)", numberCount: "0", background: blacks.contains(item) ? .black : .red)
-                                        .background(blacks.contains(item) ? .black : .red)
-                                }
-                                .frame(width:45, height: 55, alignment: .center)
-                                .clipShape(Circle())
-                                .overlay {
-                                    Rectangle().stroke(.black, lineWidth: 1).frame(width: 55, height: 55, alignment: .center)
                                 }
                             }
                         }
@@ -195,6 +200,9 @@ struct ContentView: View {
                             .background(Color(red: 0.0, green: 0.556, blue: 0.326))
                             .font(.title)
                             .foregroundColor(.white)
+                            .overlay {
+                                Text("0").frame(width: 208, height:60, alignment: .bottomTrailing)
+                            }
                         HStack {
                             Text("ODD")
                                 .fontWeight(.bold)
@@ -203,6 +211,9 @@ struct ContentView: View {
                                 .background(Color(red: 0.0, green: 0.556, blue: 0.326))
                                 .foregroundColor(.white)
                                 .font(.title2)
+                                .overlay {
+                                    Text("0").frame(width: 100, height:60, alignment: .bottomTrailing)
+                                }
                             Text("19to36")
                                 .fontWeight(.bold)
                                 .frame(width:100, height: 60, alignment: .center)
@@ -210,6 +221,9 @@ struct ContentView: View {
                                 .background(Color(red: 0.0, green: 0.556, blue: 0.326))
                                 .foregroundColor(.white)
                                 .font(.title2)
+                                .overlay {
+                                    Text("0").frame(width: 100, height:60, alignment: .bottomTrailing)
+                                }
                         }
                     }
                 }
@@ -226,6 +240,9 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .font(.title2)
                         .background(Color(red: 0.0, green: 0.556, blue: 0.326))
+                        .overlay {
+                            Text("0").frame(width: 80, height:55, alignment: .bottomTrailing)
+                        }
                     
                     Text("2to1")
                         .fontWeight(.bold)
@@ -234,6 +251,9 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .font(.title2)
                         .background(Color(red: 0.0, green: 0.556, blue: 0.326))
+                        .overlay {
+                            Text("0").frame(width: 80, height:55, alignment: .bottomTrailing)
+                        }
                     
                     Text("2to1")
                         .fontWeight(.bold)
@@ -242,6 +262,9 @@ struct ContentView: View {
                         .foregroundColor(.white)
                         .font(.title2)
                         .background(Color(red: 0.0, green: 0.556, blue: 0.326))
+                        .overlay {
+                            Text("0").frame(width: 80, height:55, alignment: .bottomTrailing)
+                        }
 
                     Spacer()
                     Spacer()
@@ -318,7 +341,7 @@ struct ContentView: View {
 struct Previews_ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .previewDevice("iPhone 13 Pro Max")
+            .previewDevice("iPhone 11")
             .preferredColorScheme(.dark)
             .previewInterfaceOrientation(.landscapeRight)
             .background(Color(red: 0.0, green: 0.556, blue: 0.326))
