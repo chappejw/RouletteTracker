@@ -7,15 +7,28 @@
 
 import Foundation
 
-struct RouletteNumber {
-    var index: Int
-    var number: Int
-}
+//struct RouletteNumber: Equatable, Hashable {
+//    var id: UUID
+//    var number: String
+//    
+//    static func == (lhs: Self, rhs: Self) -> Bool {
+//        if lhs.number == rhs.number {
+//            return true
+//        }
+//        return false
+//    }
+//    
+//    func hash(into hasher: inout Hasher) {
+//        hasher.combine(id)
+//    }
+//}
 
 
 class RouletteTable: ObservableObject {
     @Published var numberStats = [String: Int]()
+    //@Published var numberHistory = [RouletteNumber]()
     @Published var numberHistory = [String]()
+    //@Published var rNumberHistory = [RouletteNumber]()
     
     let first12 = ["3","6","9","12","2","5","8","11","1","4","7","10"]
     let second12 = ["15","18","21","24","14","17","20","23","13","16","19","22"]
@@ -62,6 +75,8 @@ class RouletteTable: ObservableObject {
     
     func resetRouletteTable() {
         numberStats.removeAll()
+        numberHistory.removeAll()
+        //rNumberHistory.removeAll()
         setupRouletteTable()
     }
     
@@ -78,6 +93,8 @@ class RouletteTable: ObservableObject {
     
     func updateCountsForNumber(_ hitNumber: String) {
         numberHistory.append(hitNumber)
+//        let rouletteNumber = RouletteNumber(id: UUID(), number: hitNumber)
+//        rNumberHistory.append(rouletteNumber)
         
         if hitNumber != "0" {
             numberStats["0"] = getCountForNumber("0") + 1

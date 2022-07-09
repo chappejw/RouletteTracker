@@ -314,22 +314,19 @@ struct ContentView: View {
                                 .foregroundColor(.white)
                                 .background(rouletteTable.greens.contains(item) ? .green : rouletteTable.reds.contains(item) ? .red : .black)
                                 .frame(width: 25, height: 45, alignment: .center)
-//                                .cornerRadius(100.0)
                                 .id(rouletteTable.numberHistory.lastIndex(of: item))
                         }
+                        Spacer()
+                            .id("anID")
                     }.frame(width: CGFloat(rouletteTable.numberHistory.count) * 25.0,
                             height: 50.0,
                             alignment: .trailing)
-//                    .border(.black, width: 1.0)
-                    
                 }
                 .onChange(of: rouletteTable.numberHistory, perform: { proxy in
-//                    print(proxy.last)
-                    print("\(String(describing: rouletteTable.numberHistory.lastIndex(of: rouletteTable.numberHistory.last ?? "0")))")
-                    value.scrollTo(rouletteTable.numberHistory.lastIndex(of: rouletteTable.numberHistory.last ?? "0"))
+                    value.scrollTo("anID")
                 })
                 .onAppear(perform: {
-                    value.scrollTo(rouletteTable.numberHistory.lastIndex(of: rouletteTable.numberHistory.last ?? "0"))
+
                 })
                 .frame(width: 750.0, height: 50.0, alignment: .leading)
                     .border(.black, width: 1.0)
