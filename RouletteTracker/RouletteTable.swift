@@ -125,6 +125,9 @@ class RouletteTable: ObservableObject {
         } else if blacks.contains(hitNumber) {
             numberStats["BLACK"] = 0
             numberStats["RED"] = getCountForNumber("RED") + 1
+        } else if greens.contains(hitNumber) {
+            numberStats["BLACK"] = getCountForNumber("BLACK") + 1
+            numberStats["RED"] = getCountForNumber("RED") + 1
         }
         
         if twoToOne_1.contains(hitNumber) {
@@ -139,6 +142,10 @@ class RouletteTable: ObservableObject {
             numberStats["2to1_3"] = 0
             numberStats["2to1_2"] = getCountForNumber("2to1_2") + 1
             numberStats["2to1_1"] = getCountForNumber("2to1_1") + 1
+        } else if hitNumber == "0" || hitNumber == "00" {
+            numberStats["2to1_1"] = getCountForNumber("2to1_1") + 1
+            numberStats["2to1_2"] = getCountForNumber("2to1_2") + 1
+            numberStats["2to1_3"] = getCountForNumber("2to1_3") + 1
         }
         
         guard let hitNumber = Int(hitNumber) else { return }
@@ -155,6 +162,9 @@ class RouletteTable: ObservableObject {
             numberStats["19to36"] = getCountForNumber("19to36") + 1
         } else if hitNumber >= 19 && hitNumber <= 36 {
             numberStats["19to36"] = 0
+            numberStats["1to18"] = getCountForNumber("1to18") + 1
+        } else if String(hitNumber) == "0" || String(hitNumber) == "00" {
+            numberStats["19to36"] = getCountForNumber("19to36") + 1
             numberStats["1to18"] = getCountForNumber("1to18") + 1
         }
         
