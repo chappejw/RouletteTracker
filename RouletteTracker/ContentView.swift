@@ -7,69 +7,39 @@
 
 import SwiftUI
 
-
-struct RouletteNumber: View {
-    var numberTile: String
-    var numberCount: String
-    var background: Color
-    var body: some View {
-        HStack {
-            Text(self.numberTile)
-                .fontWeight(.bold)
-                .frame(width:50, height: 55, alignment: .center)
-                .background(self.background)
-                .foregroundColor(.white)
-                .font(.title2)
-                .rotationEffect(Angle(degrees: -90))
-                .clipShape(Circle())
-                .overlay {
-                    Circle().stroke(.black, lineWidth: 1)
-                }
-                .overlay {
-                    Rectangle().stroke(.black, lineWidth: 1)
-                }
-                .overlay {
-                    Text(self.numberCount)
-                        .frame(width: 48, height:58, alignment: .bottomTrailing)
-                        .padding(0.0)
-                        .foregroundColor(.white)
-                        
-                }
-        }
-    }
-}
-
-
-
 struct ContentView: View {
-    let first12 = ["3","6","9","12","2","5","8","11","1","4","7","10"]
-    let second12 = ["15","18","21","24","14","17","20","23","13","16","19","22"]
-    let third12 = ["27","30","33","36","26","29","32","35","25","28","31","34"]
-    
-    let blacks: Set = ["1", "3", "5", "7", "9", "11", "13", "15", "17", "19", "21", "23", "25", "27", "29", "31", "33", "35"]
-    let reds: Set = ["2", "4", "6", "8", "10", "12", "14", "16", "18", "20", "22", "24", "26", "28", "30", "32", "34", "36"]
-    let greens: Set = ["0", "00"]
     
     let columns = [
         GridItem(.adaptive(minimum: 40))
     ]
+   
+    @StateObject var rouletteTable = RouletteTable(reset: true)
     
     var body: some View {
+        
         VStack {
             Spacer()
             HStack(spacing: 0.0) {
                 VStack(spacing: 0.0) {
                     Spacer()
                     Button {
-                        print("Button pressed")
+                        rouletteTable.numberStats["0"] = 0
+                        rouletteTable.updateCountsForNumber("0")
                     } label: {
-                        RouletteNumber(numberTile: "0", numberCount: "0", background: .green)
+                        RouletteNumberTile(numberTile: "0",
+                                       numberCount: String(rouletteTable.getCountForNumber("0")),
+                                       background: .green)
                     }
+                    
                     Button {
-                        print("Button pressed")
+                        rouletteTable.numberStats["00"] = 0
+                        rouletteTable.updateCountsForNumber("00")
                     } label: {
-                        RouletteNumber(numberTile: "00", numberCount: "0", background: .green)
+                        RouletteNumberTile(numberTile: "00",
+                                       numberCount: String(rouletteTable.getCountForNumber("00")),
+                                       background: .green)
                     }
+                    
                     Spacer()
                     Spacer()
                     Spacer()
@@ -82,11 +52,14 @@ struct ContentView: View {
                 ScrollView {
                     VStack {
                         LazyVGrid(columns: columns, spacing: 0) {
-                            ForEach(first12, id: \.self) { item in
+                            ForEach(rouletteTable.first12, id: \.self) { item in
                                 Button {
-                                    print("Button pressed")
+                                    rouletteTable.numberStats[item] = 0
+                                    rouletteTable.updateCountsForNumber(item)
                                 } label: {
-                                    RouletteNumber(numberTile: "\(item)", numberCount: "0", background: blacks.contains(item) ? .black : .red)
+                                    RouletteNumberTile(numberTile: "\(item)",
+                                                   numberCount: String(rouletteTable.getCountForNumber(item)),
+                                                   background: rouletteTable.blacks.contains(item) ? .black : .red)
                                 }
                             }
                         }
@@ -100,10 +73,11 @@ struct ContentView: View {
                             .foregroundColor(.white)
                             .font(.title)
                             .overlay {
-                                Text("0").frame(width: 208, height:60, alignment: .bottomTrailing)
+                                Text(String(rouletteTable.getCountForNumber("1st12")))
+                                    .frame(width: 208, height:60, alignment: .bottomTrailing)
                             }
                         HStack {
-                            Text("1to18")
+                            Text("1 to 18")
                                 .fontWeight(.bold)
                                 .frame(width:100, height: 60, alignment: .center)
                                 .border(.black, width: 1.0)
@@ -111,7 +85,8 @@ struct ContentView: View {
                                 .font(.title2)
                                 .foregroundColor(.white)
                                 .overlay {
-                                    Text("0").frame(width: 100, height:60, alignment: .bottomTrailing)
+                                    Text(String(rouletteTable.getCountForNumber("1to18")))
+                                        .frame(width: 100, height:60, alignment: .bottomTrailing)
                                 }
                             Text("EVEN")
                                 .fontWeight(.bold)
@@ -121,22 +96,27 @@ struct ContentView: View {
                                 .font(.title2)
                                 .foregroundColor(.white)
                                 .overlay {
-                                    Text("0").frame(width: 100, height:60, alignment: .bottomTrailing)
+                                    Text(String(rouletteTable.getCountForNumber("EVEN")))
+                                        .frame(width: 100, height:60, alignment: .bottomTrailing)
                                 }
                         }
                     }
                 }
                 .frame(width: 208, height: 300, alignment: .top)
                 .border(.black, width: 1.0)
+                .scrollEnabled(false)
                 
                 ScrollView {
                     VStack {
                         LazyVGrid(columns: columns, spacing: 0) {
-                            ForEach(second12, id: \.self) { item in
+                            ForEach(rouletteTable.second12, id: \.self) { item in
                                 Button {
-                                    print("Button pressed")
+                                    rouletteTable.numberStats[item] = 0
+                                    rouletteTable.updateCountsForNumber(item)
                                 } label: {
-                                    RouletteNumber(numberTile: "\(item)", numberCount: "0", background: blacks.contains(item) ? .black : .red)
+                                    RouletteNumberTile(numberTile: "\(item)",
+                                                   numberCount: String(rouletteTable.getCountForNumber(item)),
+                                                   background: rouletteTable.blacks.contains(item) ? .black : .red)
                                 }
                             }
                         }
@@ -150,7 +130,8 @@ struct ContentView: View {
                             .font(.title)
                             .foregroundColor(.white)
                             .overlay {
-                                Text("0").frame(width: 208, height:60, alignment: .bottomTrailing)
+                                Text(String(rouletteTable.getCountForNumber("2nd12")))
+                                    .frame(width: 208, height:60, alignment: .bottomTrailing)
                             }
                         HStack {
                             Text("RED")
@@ -161,7 +142,8 @@ struct ContentView: View {
                                 .foregroundColor(.red)
                                 .font(.title2)
                                 .overlay {
-                                    Text("0").frame(width: 100, height:60, alignment: .bottomTrailing)
+                                    Text(String(rouletteTable.getCountForNumber("RED")))
+                                        .frame(width: 100, height:60, alignment: .bottomTrailing)
                                 }
                                 
                             Text("BLACK")
@@ -172,22 +154,27 @@ struct ContentView: View {
                                 .foregroundColor(.black)
                                 .font(.title2)
                                 .overlay {
-                                    Text("0").frame(width: 100, height:60, alignment: .bottomTrailing)
+                                    Text(String(rouletteTable.getCountForNumber("BLACK")))
+                                        .frame(width: 100, height:60, alignment: .bottomTrailing)
                                 }
                         }
                     }
                 }
                 .frame(width: 208, height: 300, alignment: .top)
                 .border(.black, width: 1.0)
+                .scrollEnabled(false)
                 
                 ScrollView {
                     VStack {
                         LazyVGrid(columns: columns, spacing: 0) {
-                            ForEach(third12, id: \.self) { item in
+                            ForEach(rouletteTable.third12, id: \.self) { item in
                                 Button {
-                                    print("Button pressed")
+                                    rouletteTable.numberStats[item] = 0
+                                    rouletteTable.updateCountsForNumber(item)
                                 } label: {
-                                    RouletteNumber(numberTile: "\(item)", numberCount: "0", background: blacks.contains(item) ? .black : .red)
+                                    RouletteNumberTile(numberTile: "\(item)",
+                                                   numberCount: String(rouletteTable.getCountForNumber(item)),
+                                                   background: rouletteTable.blacks.contains(item) ? .black : .red)
                                 }
                             }
                         }
@@ -201,7 +188,7 @@ struct ContentView: View {
                             .font(.title)
                             .foregroundColor(.white)
                             .overlay {
-                                Text("0").frame(width: 208, height:60, alignment: .bottomTrailing)
+                                Text(String(rouletteTable.getCountForNumber("3rd12"))).frame(width: 208, height:60, alignment: .bottomTrailing)
                             }
                         HStack {
                             Text("ODD")
@@ -212,9 +199,9 @@ struct ContentView: View {
                                 .foregroundColor(.white)
                                 .font(.title2)
                                 .overlay {
-                                    Text("0").frame(width: 100, height:60, alignment: .bottomTrailing)
+                                    Text(String(rouletteTable.getCountForNumber("ODD"))).frame(width: 100, height:60, alignment: .bottomTrailing)
                                 }
-                            Text("19to36")
+                            Text("19 to 36")
                                 .fontWeight(.bold)
                                 .frame(width:100, height: 60, alignment: .center)
                                 .border(.black, width: 1.0)
@@ -222,14 +209,14 @@ struct ContentView: View {
                                 .foregroundColor(.white)
                                 .font(.title2)
                                 .overlay {
-                                    Text("0").frame(width: 100, height:60, alignment: .bottomTrailing)
+                                    Text(String(rouletteTable.getCountForNumber("19to36"))).frame(width: 100, height:60, alignment: .bottomTrailing)
                                 }
                         }
                     }
                 }
                 .frame(width: 208, height: 300, alignment: .top)
                 .border(.black, width: 1.0)
-                
+                .scrollEnabled(false)
                 
                 VStack(alignment: .center, spacing: 0.0) {
                     
@@ -241,7 +228,7 @@ struct ContentView: View {
                         .font(.title2)
                         .background(Color(red: 0.0, green: 0.556, blue: 0.326))
                         .overlay {
-                            Text("0").frame(width: 80, height:55, alignment: .bottomTrailing)
+                            Text(String(rouletteTable.getCountForNumber("2to1_1"))).frame(width: 80, height:55, alignment: .bottomTrailing)
                         }
                     
                     Text("2to1")
@@ -252,7 +239,7 @@ struct ContentView: View {
                         .font(.title2)
                         .background(Color(red: 0.0, green: 0.556, blue: 0.326))
                         .overlay {
-                            Text("0").frame(width: 80, height:55, alignment: .bottomTrailing)
+                            Text(String(rouletteTable.getCountForNumber("2to1_2"))).frame(width: 80, height:55, alignment: .bottomTrailing)
                         }
                     
                     Text("2to1")
@@ -263,7 +250,7 @@ struct ContentView: View {
                         .font(.title2)
                         .background(Color(red: 0.0, green: 0.556, blue: 0.326))
                         .overlay {
-                            Text("0").frame(width: 80, height:55, alignment: .bottomTrailing)
+                            Text(String(rouletteTable.getCountForNumber("2to1_3"))).frame(width: 80, height:55, alignment: .bottomTrailing)
                         }
 
                     Spacer()
@@ -276,7 +263,7 @@ struct ContentView: View {
             HStack {
                 Spacer()
                 Button("Reset") {
-                    
+                    rouletteTable.resetRouletteTable()
                 }.frame(width: 150.0, height: 30.0, alignment: .center)
                     .border(.black, width: 0.5)
                     .background(.red)
@@ -317,22 +304,42 @@ struct ContentView: View {
                 Spacer()
             }.background(Color(red: 0.0, green: 0.556, blue: 0.326))
             
-            HStack {
-                ForEach(second12, id: \.self) { item in
-                    Text(item)
-                        .fontWeight(.light)
-                        .foregroundColor(.white)
-                        .background(reds.contains(item) ? .red : .black)
-                        .frame(width: 35, height: 35, alignment: .center)
-                        .clipShape(Circle())
-                        .cornerRadius(100.0)
+            
+            ScrollViewReader { value in
+                ScrollView(.horizontal, showsIndicators: false) {
+                    HStack(spacing: 0.0) {
+                        ForEach(rouletteTable.numberHistory, id: \.self) { item in
+                            Text(item)
+                                .fontWeight(.bold)
+                                .foregroundColor(.white)
+                                .background(rouletteTable.greens.contains(item) ? .green : rouletteTable.reds.contains(item) ? .red : .black)
+                                .frame(width: 25, height: 45, alignment: .center)
+//                                .cornerRadius(100.0)
+                                .id(rouletteTable.numberHistory.lastIndex(of: item))
+                        }
+                    }.frame(width: CGFloat(rouletteTable.numberHistory.count) * 25.0,
+                            height: 50.0,
+                            alignment: .trailing)
+//                    .border(.black, width: 1.0)
+                    
                 }
-            }.frame(width: 750.0, height: 35.0, alignment: .leading)
+                .onChange(of: rouletteTable.numberHistory, perform: { proxy in
+//                    print(proxy.last)
+                    print("\(String(describing: rouletteTable.numberHistory.lastIndex(of: rouletteTable.numberHistory.last ?? "0")))")
+                    value.scrollTo(rouletteTable.numberHistory.lastIndex(of: rouletteTable.numberHistory.last ?? "0"))
+                })
+                .onAppear(perform: {
+                    value.scrollTo(rouletteTable.numberHistory.lastIndex(of: rouletteTable.numberHistory.last ?? "0"))
+                })
+                .frame(width: 750.0, height: 50.0, alignment: .leading)
                     .border(.black, width: 1.0)
+                    
+            }
             
         }.background(Color(red: 0.0, green: 0.556, blue: 0.326))
-        
-        
+            .onLoad {
+                
+            }
     }
 }
 

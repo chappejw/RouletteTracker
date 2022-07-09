@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct RouletteTrackerApp: App {
+    @StateObject var rouletteTable = RouletteTable(reset: true)
     var body: some Scene {
         WindowGroup {
             ContentView()
