@@ -11,15 +11,19 @@ struct RouletteNumberTile: View, Hashable {
     var numberTile: String
     var numberCount: String
     var background: Color
+    var tileWidth: CGFloat
+    var tileHeight: CGFloat
+    
     var body: some View {
         HStack {
-            Text(self.numberTile)
+            Text(numberTile)
                 .fontWeight(.bold)
-                .frame(width:50, height: 55, alignment: .center)
-                .background(self.background)
+                .frame(width:tileWidth, height: tileHeight, alignment: .center)
+                .background(background)
                 .foregroundColor(.white)
                 .font(.title2)
                 .rotationEffect(Angle(degrees: -90))
+                //.allowsTightening(true)
                 .clipShape(Circle())
                 .overlay {
                     Circle().stroke(.black, lineWidth: 1)
@@ -28,8 +32,8 @@ struct RouletteNumberTile: View, Hashable {
                     Rectangle().stroke(.black, lineWidth: 1)
                 }
                 .overlay {
-                    Text(self.numberCount)
-                        .frame(width: 48, height:58, alignment: .bottomTrailing)
+                    Text(numberCount)
+                        .frame(width: tileWidth, height:tileHeight, alignment: .bottomTrailing)
                         .padding(0.0)
                         .foregroundColor(.white)
                         

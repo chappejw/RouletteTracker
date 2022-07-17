@@ -8,7 +8,7 @@
 import SwiftUI
 
 @main
-struct RouletteTrackerApp: App {
+struct RouletteHistoryApp: App {
     @StateObject var rouletteTable = RouletteTable(reset: true)
     var body: some Scene {
         WindowGroup {
@@ -17,7 +17,7 @@ struct RouletteTrackerApp: App {
     }
 }
 
-struct Previews_RouletteTrackerApp_Previews: PreviewProvider {
+struct Previews_RouletteHistoryApp_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             ContentView()
