@@ -24,9 +24,9 @@ extension View {
 extension View {
     func glow(color: Color = .red, radius: CGFloat = 10) -> some View {
         self
-            .shadow(color: color, radius: radius / 3)
-            .shadow(color: color, radius: radius / 3)
-            .shadow(color: color, radius: radius / 3)
+            .shadow(color: color, radius: radius)
+            .shadow(color: color, radius: radius)
+            .shadow(color: color, radius: radius)
     }
 }
 
@@ -414,7 +414,7 @@ struct ContentView: View {
                                 .background(rouletteTable.greens.contains(item) ? .green : rouletteTable.reds.contains(item) ? .red : .black)
                                 .clipShape(Circle())
                                 .id(rouletteTable.numberHistory.lastIndex(of: item))
-                                .glow(color: rouletteTable.greens.contains(item) ? .green : rouletteTable.reds.contains(item) ? .red : .black, radius: 5)
+                                .glow(color: rouletteTable.greens.contains(item) ? .green : rouletteTable.reds.contains(item) ? .red : .black, radius: 2.0)
                                 .padding(2)
                         }
                         Spacer()
