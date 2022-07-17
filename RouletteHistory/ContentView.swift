@@ -401,10 +401,8 @@ struct ContentView: View {
                 })
                 .frame(width: 750.0, height: 30.0, alignment: .leading)
                     .border(.black, width: 2.0)
-                    
-                    
             }
-            
+            Spacer()
         }.background(Color(red: 0.0, green: 0.556, blue: 0.326))
             .onLoad {
                 
