@@ -7,6 +7,29 @@
 
 import SwiftUI
 
+extension View {
+    func multicolorGlow() -> some View {
+        ZStack {
+            ForEach(0..<2) { i in
+                Rectangle()
+                    .fill(AngularGradient(gradient: Gradient(colors: [.red, .yellow, .green, .blue, .purple, .red]), center: .center))
+                    .frame(width: 40, height: 45)
+                    .mask(self.blur(radius: 10))
+                    .overlay(self.blur(radius: 5 - CGFloat(i * 5)))
+            }
+        }
+    }
+}
+
+extension View {
+    func glow(color: Color = .red, radius: CGFloat = 10) -> some View {
+        self
+            .shadow(color: color, radius: radius / 3)
+            .shadow(color: color, radius: radius / 3)
+            .shadow(color: color, radius: radius / 3)
+    }
+}
+
 struct ContentView: View {
         
     struct Defaults {
@@ -20,8 +43,8 @@ struct ContentView: View {
         static let fifty50Width = sectionWidth/2.0-4.0
         static let buttonWidth = 150.0
         static let buttonHeight = 20.0
-        static let historyNumWidth = 30.0
-        static let historyNumHeight = 30.0
+        static let historyNumWidth = 25.0
+        static let historyNumHeight = 25.0
     }
     
     let columns = [
@@ -170,6 +193,7 @@ struct ContentView: View {
                             .foregroundColor(.white)
                             .overlay {
                                 Text(String(rouletteTable.getCountForNumber("2nd12")))
+                                    .padding(1.0)
                                     .frame(width: Defaults.sectionWidth,
                                            height:Defaults.section12Height+17.0,
                                            alignment: .bottomTrailing)
@@ -237,6 +261,7 @@ struct ContentView: View {
                             .foregroundColor(.white)
                             .overlay {
                                 Text(String(rouletteTable.getCountForNumber("3rd12")))
+                                    .padding(1.0)
                                     .frame(width: Defaults.sectionWidth,
                                            height:Defaults.section12Height+17.0,
                                            alignment: .bottomTrailing)
@@ -288,6 +313,7 @@ struct ContentView: View {
                         .background(Color(red: 0.0, green: 0.556, blue: 0.326))
                         .overlay {
                             Text(String(rouletteTable.getCountForNumber("2to1_1")))
+                                .padding(1.0)
                                 .frame(width: Defaults.two2oneWidth,
                                        height: Defaults.tileHeight,
                                        alignment: .bottomTrailing)
@@ -302,6 +328,7 @@ struct ContentView: View {
                         .background(Color(red: 0.0, green: 0.556, blue: 0.326))
                         .overlay {
                             Text(String(rouletteTable.getCountForNumber("2to1_2")))
+                                .padding(1.0)
                                 .frame(width: Defaults.two2oneWidth,
                                        height: Defaults.tileHeight,
                                        alignment: .bottomTrailing)
@@ -316,6 +343,7 @@ struct ContentView: View {
                         .background(Color(red: 0.0, green: 0.556, blue: 0.326))
                         .overlay {
                             Text(String(rouletteTable.getCountForNumber("2to1_3")))
+                                .padding(1.0)
                                 .frame(width: Defaults.two2oneWidth,
                                        height: Defaults.tileHeight,
                                        alignment: .bottomTrailing)
@@ -386,12 +414,14 @@ struct ContentView: View {
                                 .background(rouletteTable.greens.contains(item) ? .green : rouletteTable.reds.contains(item) ? .red : .black)
                                 .clipShape(Circle())
                                 .id(rouletteTable.numberHistory.lastIndex(of: item))
+                                .glow(color: rouletteTable.greens.contains(item) ? .green : rouletteTable.reds.contains(item) ? .red : .black, radius: 5)
+                                .padding(2)
                         }
                         Spacer()
                             .id("anID")
-                    }.frame(width: CGFloat(rouletteTable.numberHistory.count) * Defaults.historyNumWidth,
+                    }.frame(width: CGFloat(rouletteTable.numberHistory.count) * Defaults.historyNumWidth+2,
                             height: Defaults.historyNumHeight,
-                            alignment: .trailing)
+                            alignment: .leading)
                 }
                 .onChange(of: rouletteTable.numberHistory, perform: { proxy in
                     value.scrollTo("anID")
