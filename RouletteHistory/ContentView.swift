@@ -45,6 +45,8 @@ struct ContentView: View {
         static let buttonHeight = 20.0
         static let historyNumWidth = 25.0
         static let historyNumHeight = 25.0
+        static let sectionShadowRadius = 2.0
+        static let tileShadowRadius = 2.0
     }
     
     let columns = [
@@ -63,6 +65,7 @@ struct ContentView: View {
                     Button {
                         rouletteTable.numberStats["0"] = 0
                         rouletteTable.updateCountsForNumber("0")
+                        playSound(key: "torch-click")
                     } label: {
                         RouletteNumberTile(numberTile: "0",
                                        numberCount: String(rouletteTable.getCountForNumber("0")),
@@ -76,6 +79,7 @@ struct ContentView: View {
                     Button {
                         rouletteTable.numberStats["00"] = 0
                         rouletteTable.updateCountsForNumber("00")
+                        playSound(key: "torch-click")
                     } label: {
                         RouletteNumberTile(numberTile: "00",
                                        numberCount: String(rouletteTable.getCountForNumber("00")),
@@ -95,7 +99,11 @@ struct ContentView: View {
                     
                     
                 }.frame(width: 40, height: 275)
-                    
+                    .shadow(color: .black,
+                            radius: Defaults.tileShadowRadius,
+                            x: 1,
+                            y: 1)
+                
                 
                 ScrollView {
                     VStack {
@@ -104,6 +112,7 @@ struct ContentView: View {
                                 Button {
                                     rouletteTable.numberStats[item] = 0
                                     rouletteTable.updateCountsForNumber(item)
+                                    playSound(key: "torch-click")
                                 } label: {
                                     RouletteNumberTile(numberTile: "\(item)",
                                                    numberCount: String(rouletteTable.getCountForNumber(item)),
@@ -111,6 +120,10 @@ struct ContentView: View {
                                                    tileWidth: Defaults.tileWidth,
                                                    tileHeight: Defaults.tileHeight)
                                 }.frame(width:Defaults.tileWidth, height: Defaults.tileHeight, alignment: .center)
+                                    .shadow(color: .black,
+                                            radius: Defaults.tileShadowRadius,
+                                            x: 1,
+                                            y: 1)
                             }
                         }
                         .background(Color(red: 0.0, green: 0.556, blue: 0.326))
@@ -118,6 +131,10 @@ struct ContentView: View {
                         Text("1st 12")
                             .fontWeight(.bold)
                             .frame(width:Defaults.sectionWidth, height: Defaults.section12Height)
+                            .shadow(color: .black,
+                                    radius: Defaults.tileShadowRadius,
+                                    x: 1,
+                                    y: 1)
                             .background(Color(red: 0.0, green: 0.556, blue: 0.326))
                             .foregroundColor(.white)
                             .font(.title)
@@ -126,7 +143,12 @@ struct ContentView: View {
                                     .frame(width: Defaults.sectionWidth,
                                            height:Defaults.section12Height+17.0,
                                            alignment: .bottomTrailing)
+                                    .shadow(color: .black,
+                                            radius: Defaults.tileShadowRadius,
+                                            x: 1,
+                                            y: 1)
                             }
+                            
                         HStack {
                             Text("1 to 18")
                                 .fontWeight(.bold)
@@ -144,6 +166,10 @@ struct ContentView: View {
                                                height:Defaults.section12Height,
                                                alignment: .bottomTrailing)
                                 }
+                                .shadow(color: .black,
+                                        radius: Defaults.sectionShadowRadius,
+                                        x: 1,
+                                        y: 1)
                             Text("EVEN")
                                 .fontWeight(.bold)
                                 .frame(width: Defaults.fifty50Width,
@@ -160,6 +186,10 @@ struct ContentView: View {
                                                height:Defaults.section12Height,
                                                alignment: .bottomTrailing)
                                 }
+                                .shadow(color: .black,
+                                        radius: Defaults.sectionShadowRadius,
+                                        x: 1,
+                                        y: 1)
                         }
                     }
                 }
@@ -174,6 +204,7 @@ struct ContentView: View {
                                 Button {
                                     rouletteTable.numberStats[item] = 0
                                     rouletteTable.updateCountsForNumber(item)
+                                    playSound(key: "torch-click")
                                 } label: {
                                     RouletteNumberTile(numberTile: "\(item)",
                                                    numberCount: String(rouletteTable.getCountForNumber(item)),
@@ -181,6 +212,10 @@ struct ContentView: View {
                                                    tileWidth: Defaults.tileWidth,
                                                    tileHeight: Defaults.tileHeight)
                                 }.frame(width:Defaults.tileWidth, height: Defaults.tileHeight, alignment: .center)
+                                    .shadow(color: .black,
+                                            radius: Defaults.tileShadowRadius,
+                                            x: 1,
+                                            y: 1)
                             }
                         }
                         .background(Color(red: 0.0, green: 0.556, blue: 0.326))
@@ -188,6 +223,10 @@ struct ContentView: View {
                         Text("2nd 12")
                             .fontWeight(.bold)
                             .frame(width:Defaults.sectionWidth, height: Defaults.section12Height)
+                            .shadow(color: .black,
+                                    radius: Defaults.tileShadowRadius,
+                                    x: 1,
+                                    y: 1)
                             .background(Color(red: 0.0, green: 0.556, blue: 0.326))
                             .font(.title)
                             .foregroundColor(.white)
@@ -197,6 +236,10 @@ struct ContentView: View {
                                     .frame(width: Defaults.sectionWidth,
                                            height:Defaults.section12Height+17.0,
                                            alignment: .bottomTrailing)
+                                    .shadow(color: .black,
+                                            radius: Defaults.tileShadowRadius,
+                                            x: 1,
+                                            y: 1)
                             }
                         HStack {
                             Text("RED")
@@ -213,6 +256,10 @@ struct ContentView: View {
                                                height:Defaults.section12Height,
                                                alignment: .bottomTrailing)
                                 }
+                                .shadow(color: .black,
+                                        radius: Defaults.sectionShadowRadius,
+                                        x: 1,
+                                        y: 1)
                                 
                             Text("BLACK")
                                 .fontWeight(.bold)
@@ -228,6 +275,10 @@ struct ContentView: View {
                                                height:Defaults.section12Height,
                                                alignment: .bottomTrailing)
                                 }
+                                .shadow(color: .black,
+                                        radius: Defaults.sectionShadowRadius,
+                                        x: 1,
+                                        y: 1)
                         }
                     }
                 }
@@ -242,6 +293,7 @@ struct ContentView: View {
                                 Button {
                                     rouletteTable.numberStats[item] = 0
                                     rouletteTable.updateCountsForNumber(item)
+                                    playSound(key: "torch-click")
                                 } label: {
                                     RouletteNumberTile(numberTile: "\(item)",
                                                    numberCount: String(rouletteTable.getCountForNumber(item)),
@@ -249,6 +301,10 @@ struct ContentView: View {
                                                    tileWidth: Defaults.tileWidth,
                                                    tileHeight: Defaults.tileHeight)
                                 }.frame(width:Defaults.tileWidth, height: Defaults.tileHeight, alignment: .center)
+                                    .shadow(color: .black,
+                                            radius: Defaults.tileShadowRadius,
+                                            x: 1,
+                                            y: 1)
                             }
                         }
                         .background(Color(red: 0.0, green: 0.556, blue: 0.326))
@@ -256,6 +312,10 @@ struct ContentView: View {
                         Text("3rd 12")
                             .fontWeight(.bold)
                             .frame(width: Defaults.sectionWidth, height: Defaults.section12Height)
+                            .shadow(color: .black,
+                                    radius: Defaults.tileShadowRadius,
+                                    x: 1,
+                                    y: 1)
                             .background(Color(red: 0.0, green: 0.556, blue: 0.326))
                             .font(.title)
                             .foregroundColor(.white)
@@ -265,6 +325,10 @@ struct ContentView: View {
                                     .frame(width: Defaults.sectionWidth,
                                            height:Defaults.section12Height+17.0,
                                            alignment: .bottomTrailing)
+                                    .shadow(color: .black,
+                                            radius: Defaults.tileShadowRadius,
+                                            x: 1,
+                                            y: 1)
                             }
                         HStack {
                             Text("ODD")
@@ -281,6 +345,10 @@ struct ContentView: View {
                                                height:Defaults.section12Height,
                                                alignment: .bottomTrailing)
                                 }
+                                .shadow(color: .black,
+                                        radius: Defaults.sectionShadowRadius,
+                                        x: 1,
+                                        y: 1)
                             Text("19 to 36")
                                 .fontWeight(.bold)
                                 .frame(width:Defaults.fifty50Width, height: 50, alignment: .center)
@@ -295,12 +363,17 @@ struct ContentView: View {
                                                height: Defaults.section12Height,
                                                alignment: .bottomTrailing)
                                 }
+                                .shadow(color: .black,
+                                        radius: Defaults.sectionShadowRadius,
+                                        x: 1,
+                                        y: 1)
                         }
                     }
                 }
                 .frame(width: Defaults.sectionWidth, height: Defaults.sectionHeight, alignment: .top)
                 .border(.black, width: 1.0)
                 .scrollEnabled(false)
+                
                 
                 VStack(alignment: .center, spacing: 0.0) {
                     
@@ -352,14 +425,51 @@ struct ContentView: View {
                     Spacer()
                     Spacer()
                     
+                }.frame(width: Defaults.two2oneWidth,
+                        height: Defaults.sectionHeight,
+                        alignment: .center)
+                .shadow(color: .black,
+                        radius: Defaults.tileShadowRadius,
+                        x: 1,
+                        y: 1)
+                
+                VStack(alignment: .center, spacing: 0.0) {
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    Spacer()
+                    
+                    
+                    Button {
+                        playSound(key: "torch-click")
+                    } label: {
+                        Image("startButton")
+                    }
+                    .frame(width:Defaults.two2oneWidth/2, height: Defaults.two2oneWidth, alignment: .center)
+                        .cornerRadius(Defaults.two2oneWidth/2.0)
+                        .clipShape(Circle())
+                        .overlay {
+                            Text("?")
+                                .font(.title)
+                                .bold()
+                                .padding(0)
+                                .foregroundColor(.black)
+                        }.shadow(color: .black, radius: 5, x: 2, y: 4)
+                        
+                        
+
+                    
+                    
                 }.frame(width: Defaults.two2oneWidth, height: Defaults.sectionHeight, alignment: .center)
                 
             }.background(Color(red: 0.0, green: 0.556, blue: 0.326))
+            
             
             HStack {
                 Spacer()
                 Button("Reset") {
                     rouletteTable.resetRouletteTable()
+                    playSound(key: "crumple")
                 }.frame(width: Defaults.buttonWidth, height: Defaults.buttonHeight, alignment: .center)
                     .border(.black, width: 0.5)
                     .background(.red)
@@ -414,7 +524,7 @@ struct ContentView: View {
                                 .background(rouletteTable.greens.contains(item) ? .green : rouletteTable.reds.contains(item) ? .red : .black)
                                 .clipShape(Circle())
                                 .id(rouletteTable.numberHistory.lastIndex(of: item))
-                                .glow(color: rouletteTable.greens.contains(item) ? .green : rouletteTable.reds.contains(item) ? .red : .black, radius: 2.0)
+                                .glow(color: rouletteTable.greens.contains(item) ? .green : rouletteTable.reds.contains(item) ? .red : .black, radius: 1.0)
                                 .padding(2)
                         }
                         Spacer()
@@ -432,6 +542,10 @@ struct ContentView: View {
                 .frame(width: 750.0, height: 30.0, alignment: .leading)
                     .border(.black, width: 2.0)
             }
+            .shadow(color: .black,
+                    radius: Defaults.sectionShadowRadius,
+                    x: 1,
+                    y: 1)
             Spacer()
         }.background(Color(red: 0.0, green: 0.556, blue: 0.326))
             .onLoad {
