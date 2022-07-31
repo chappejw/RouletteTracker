@@ -12,7 +12,7 @@ struct RouletteHistoryApp: App {
     @StateObject var rouletteTable = RouletteTable(reset: true)
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView().environmentObject(rouletteTable)
         }
     }
 }

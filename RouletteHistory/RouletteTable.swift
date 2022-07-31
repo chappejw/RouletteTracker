@@ -54,6 +54,16 @@ class RouletteTable: ObservableObject {
         addNumber("2to1_3")
     }
     
+    func undo() {
+        numberHistory.removeLast()
+        numberStats.removeAll()
+        let undoHistory = Array(numberHistory)
+        numberHistory.removeAll()
+        for number in undoHistory.enumerated() {
+            self.updateCountsForNumber(number.element)
+        }
+    }
+    
     func resetRouletteTable() {
         numberStats.removeAll()
         numberHistory.removeAll()
