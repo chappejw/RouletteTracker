@@ -32,8 +32,8 @@ extension View {
 
 struct ContentView: View {
 
-    @EnvironmentObject var rouletteTable: RouletteTable
-
+    @StateObject var rouletteTable = RouletteTable(reset: true)
+    
     struct Defaults {
         static let tileWidth = 40.0
         static let tileHeight = 45.0
