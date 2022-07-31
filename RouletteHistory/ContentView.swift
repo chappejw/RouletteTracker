@@ -31,7 +31,9 @@ extension View {
 }
 
 struct ContentView: View {
-        
+
+    @EnvironmentObject var rouletteTable: RouletteTable
+
     struct Defaults {
         static let tileWidth = 40.0
         static let tileHeight = 45.0
@@ -53,7 +55,6 @@ struct ContentView: View {
         GridItem(.adaptive(minimum: 33, maximum: 33))
     ]
    
-    @StateObject var rouletteTable = RouletteTable(reset: true)
     
     var body: some View {
         
@@ -478,7 +479,8 @@ struct ContentView: View {
                     .shadow(color: .black, radius: 3.0, x: 2.0, y: 2.0)
                 
                 Button("Undo") {
-                    
+                    rouletteTable.undo()
+                    playSound(key: "torch-click")
                 }.frame(width: Defaults.buttonWidth, height: Defaults.buttonHeight, alignment: .center)
                     .border(.black, width: 0.5)
                     .background(.green)
