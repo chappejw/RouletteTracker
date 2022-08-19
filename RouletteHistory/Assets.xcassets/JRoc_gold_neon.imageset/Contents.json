@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "JRoc_gold_neon.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
