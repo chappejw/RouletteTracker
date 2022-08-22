@@ -52,7 +52,7 @@ struct StudioView: View {
                             .font(.headline)
                             .foregroundColor(.black)
                             .padding()
-                            .frame(width: 100, height: 40, alignment: .center)
+                            .frame(width: 120, height: 40, alignment: .center)
                             .background(.red)
                             .cornerRadius(15.0)
                             

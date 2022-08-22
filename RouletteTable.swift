@@ -78,7 +78,7 @@ class RouletteTable: ObservableObject {
         tableState == TableState.stopped.rawValue
     }
     
-    fileprivate func hapticClick() {
+    private func hapticClick() {
         let impactMed = UIImpactFeedbackGenerator(style: .heavy)
         impactMed.impactOccurred()
     }
