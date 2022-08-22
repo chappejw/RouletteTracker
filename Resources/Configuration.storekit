@@ -15,8 +15,8 @@
           "locale" : "en_US"
         }
       ],
-      "productID" : "com.chappelle.unlockRouletteGenie",
-      "referenceName" : "Unlock Roulette Genie",
+      "productID" : "com.chappelle.unlockRouletteMagic",
+      "referenceName" : "Unlock Roulette Magic",
       "type" : "NonConsumable"
     }
   ],

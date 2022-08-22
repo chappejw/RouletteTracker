@@ -61,7 +61,7 @@ struct RouletteNumberTile: View, Hashable {
                 }
                 .overlay {
                     Text(numberCount)
-                        .frame(width: tileWidth, height:tileHeight, alignment: .bottomTrailing)
+                        .frame(width: tileWidth, height:tileHeight+5.0, alignment: .bottomTrailing)
                         .padding(0.0)
                         .foregroundColor(.white)
                 }

@@ -37,7 +37,7 @@ struct ProductDetailView: View {
                         .padding()
                     Spacer()
                 }
-                if product.type == .nonConsumable, !store.fuel.isEmpty {
+                if product.type == .nonConsumable, !store.consumables.isEmpty {
                     fuelView
                 }
             }
@@ -59,7 +59,7 @@ struct ProductDetailView: View {
     }
     
     var fuelPurchaseView: some View {
-        FuelStoreView(fuels: store.fuel, onPurchase: { fuel in
+        FuelStoreView(fuels: store.consumables, onPurchase: { fuel in
             withAnimation {
                 isFuelStoreShowing = false
             }
@@ -86,7 +86,7 @@ struct ProductDetailView: View {
         VStack {
             Spacer()
             HStack {
-                FuelSupplyView(fuels: store.fuel, consumedFuel: { fuel in
+                FuelSupplyView(fuels: store.consumables, consumedFuel: { fuel in
                     driveVehicle()
                 })
                 .padding()

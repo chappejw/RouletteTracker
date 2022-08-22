@@ -146,7 +146,7 @@ class RouletteTable: ObservableObject {
             tilesPerSecond += 1.0
         }
         tilesPerSecond = tilesPerSecond / 100.0
-        
+        print("tilesPerSecond: \(tilesPerSecond)")
         if let _ = Double(String(format: "%.2f", timerValue)) {
             //print("elapsedTime: \(timerValue)")
             
@@ -246,18 +246,6 @@ class RouletteTable: ObservableObject {
                 await resetMagicNumber()
                 print("Reset Magic Number")
             }
-//            let previousNumber = previousNumber(number: hitNumber)
-//            startNumber(number: previousNumber)
-//            Task {
-//                await self.resetMagicNumber()
-//                print("Reset Magic Number")
-//            }
-//            let nextNumber = nextNumber(number: hitNumber)
-//            startNumber(number: nextNumber)
-//            Task {
-//                await self.resetMagicNumber()
-//                print("Reset Magic Number")
-//            }
         } else {
             numberStats[hitNumber] = 0
             numberHistory.append(hitNumber)

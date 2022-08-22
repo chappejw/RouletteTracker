@@ -1,0 +1,531 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		126A1BF228B22591008763EE /* DeviceKit in Frameworks */ = {isa = PBXBuildFile; productRef = 126A1BF128B22591008763EE /* DeviceKit */; };
+		12AA12B528A99FFB00EDF1D5 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12AA12B428A99FFB00EDF1D5 /* StoreKit.framework */; };
+		12C4DB0C28B2FE700032082C /* RouletteTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DB0B28B2FE700032082C /* RouletteTable.swift */; };
+		12C4DB0D28B2FE700032082C /* SheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DB0828B2FE700032082C /* SheetView.swift */; };
+		12C4DB0E28B2FE700032082C /* View+ScrollLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DAEB28B2FE700032082C /* View+ScrollLock.swift */; };
+		12C4DB0F28B2FE700032082C /* View+OnLoad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DAEE28B2FE700032082C /* View+OnLoad.swift */; };
+		12C4DB1028B2FE700032082C /* Task+sleep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DAED28B2FE700032082C /* Task+sleep.swift */; };
+		12C4DB1128B2FE700032082C /* RouletteHistoryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DB0A28B2FE700032082C /* RouletteHistoryApp.swift */; };
+		12C4DB1228B2FE700032082C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DAF428B2FE700032082C /* ContentView.swift */; };
+		12C4DB1328B2FE700032082C /* Instrument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DAEC28B2FE700032082C /* Instrument.swift */; };
+		12C4DB1428B2FE700032082C /* RouletteNumberTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DAEA28B2FE700032082C /* RouletteNumberTile.swift */; };
+		12C4DB1528B2FE700032082C /* ViewDidLoadModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DB0928B2FE700032082C /* ViewDidLoadModifier.swift */; };
+		12C4DB1628B3016D0032082C /* FuelSupplyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DB0028B2FE700032082C /* FuelSupplyView.swift */; };
+		12C4DB1728B3016D0032082C /* ProductDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DB0128B2FE700032082C /* ProductDetailView.swift */; };
+		12C4DB1828B3016D0032082C /* StatusInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DAFC28B2FE700032082C /* StatusInfoView.swift */; };
+		12C4DB1928B3016D0032082C /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DB0328B2FE700032082C /* Store.swift */; };
+		12C4DB1A28B3016D0032082C /* SubscriptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DAFF28B2FE700032082C /* SubscriptionsView.swift */; };
+		12C4DB1B28B3016D0032082C /* FuelProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DAFB28B2FE700032082C /* FuelProductView.swift */; };
+		12C4DB1C28B3016D0032082C /* StudioView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DB0228B2FE700032082C /* StudioView.swift */; };
+		12C4DB1D28B3016D0032082C /* FuelStoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DB0528B2FE700032082C /* FuelStoreView.swift */; };
+		12C4DB1E28B3016D0032082C /* BuyButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DAFE28B2FE700032082C /* BuyButtonStyle.swift */; };
+		12C4DB1F28B3016D0032082C /* ListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DB0428B2FE700032082C /* ListCellView.swift */; };
+		12C4DB2028B3016D0032082C /* StoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DAFD28B2FE700032082C /* StoreView.swift */; };
+		12C4DB2128B301770032082C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12C4DB0728B2FE700032082C /* Preview Assets.xcassets */; };
+		12C4DB2228B301830032082C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12C4DAF228B2FE700032082C /* Assets.xcassets */; };
+		12C4DB2328B3018A0032082C /* Products.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12C4DAF028B2FE700032082C /* Products.plist */; };
+		12C4DB2428B3018E0032082C /* Products.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 12C4DAF128B2FE700032082C /* Products.storekit */; };
+		12C4DB2528B301920032082C /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 12C4DAF328B2FE700032082C /* Configuration.storekit */; };
+		12C4DB2828B301F90032082C /* RouletteAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DAF628B2FE700032082C /* RouletteAudio.swift */; };
+		12C4DB2928B304CF0032082C /* crumple.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 12C4DAF828B2FE700032082C /* crumple.mp3 */; };
+		12C4DB2A28B304CF0032082C /* torch-click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 12C4DAF928B2FE700032082C /* torch-click.mp3 */; };
+		12F1AD5D28B31AE6002B0C2C /* magical-spell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 12F1AD5B28B31AE6002B0C2C /* magical-spell.mp3 */; };
+		12F1AD5E28B31AE6002B0C2C /* button-click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 12F1AD5C28B31AE6002B0C2C /* button-click.mp3 */; };
+		12F1AD6028B324E7002B0C2C /* button-click1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 12F1AD5F28B324E7002B0C2C /* button-click1.mp3 */; };
+		12F1AD6228B33EE3002B0C2C /* fairy-glitter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 12F1AD6128B33EE3002B0C2C /* fairy-glitter.mp3 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		12086A2D28966DBE00003A0A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		12086A2F289670E600003A0A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		12AA12B428A99FFB00EDF1D5 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		12C4DAEA28B2FE700032082C /* RouletteNumberTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteNumberTile.swift; sourceTree = "<group>"; };
+		12C4DAEB28B2FE700032082C /* View+ScrollLock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ScrollLock.swift"; sourceTree = "<group>"; };
+		12C4DAEC28B2FE700032082C /* Instrument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Instrument.swift; sourceTree = "<group>"; };
+		12C4DAED28B2FE700032082C /* Task+sleep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Task+sleep.swift"; sourceTree = "<group>"; };
+		12C4DAEE28B2FE700032082C /* View+OnLoad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+OnLoad.swift"; sourceTree = "<group>"; };
+		12C4DAF028B2FE700032082C /* Products.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Products.plist; sourceTree = "<group>"; };
+		12C4DAF128B2FE700032082C /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Products.storekit; sourceTree = "<group>"; };
+		12C4DAF228B2FE700032082C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		12C4DAF328B2FE700032082C /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
+		12C4DAF428B2FE700032082C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		12C4DAF628B2FE700032082C /* RouletteAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteAudio.swift; sourceTree = "<group>"; };
+		12C4DAF828B2FE700032082C /* crumple.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = crumple.mp3; sourceTree = "<group>"; };
+		12C4DAF928B2FE700032082C /* torch-click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "torch-click.mp3"; sourceTree = "<group>"; };
+		12C4DAFB28B2FE700032082C /* FuelProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelProductView.swift; sourceTree = "<group>"; };
+		12C4DAFC28B2FE700032082C /* StatusInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusInfoView.swift; sourceTree = "<group>"; };
+		12C4DAFD28B2FE700032082C /* StoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreView.swift; sourceTree = "<group>"; };
+		12C4DAFE28B2FE700032082C /* BuyButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyButtonStyle.swift; sourceTree = "<group>"; };
+		12C4DAFF28B2FE700032082C /* SubscriptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionsView.swift; sourceTree = "<group>"; };
+		12C4DB0028B2FE700032082C /* FuelSupplyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelSupplyView.swift; sourceTree = "<group>"; };
+		12C4DB0128B2FE700032082C /* ProductDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductDetailView.swift; sourceTree = "<group>"; };
+		12C4DB0228B2FE700032082C /* StudioView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioView.swift; sourceTree = "<group>"; };
+		12C4DB0328B2FE700032082C /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
+		12C4DB0428B2FE700032082C /* ListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCellView.swift; sourceTree = "<group>"; };
+		12C4DB0528B2FE700032082C /* FuelStoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FuelStoreView.swift; sourceTree = "<group>"; };
+		12C4DB0728B2FE700032082C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		12C4DB0828B2FE700032082C /* SheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetView.swift; sourceTree = "<group>"; };
+		12C4DB0928B2FE700032082C /* ViewDidLoadModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewDidLoadModifier.swift; sourceTree = "<group>"; };
+		12C4DB0A28B2FE700032082C /* RouletteHistoryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteHistoryApp.swift; sourceTree = "<group>"; };
+		12C4DB0B28B2FE700032082C /* RouletteTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteTable.swift; sourceTree = "<group>"; };
+		12E33AF72854725D002E0F33 /* Roulette Magic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Roulette Magic.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		12F1AD5B28B31AE6002B0C2C /* magical-spell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "magical-spell.mp3"; sourceTree = "<group>"; };
+		12F1AD5C28B31AE6002B0C2C /* button-click.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "button-click.mp3"; sourceTree = "<group>"; };
+		12F1AD5F28B324E7002B0C2C /* button-click1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "button-click1.mp3"; sourceTree = "<group>"; };
+		12F1AD6128B33EE3002B0C2C /* fairy-glitter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "fairy-glitter.mp3"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		12E33AF42854725D002E0F33 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12AA12B528A99FFB00EDF1D5 /* StoreKit.framework in Frameworks */,
+				126A1BF228B22591008763EE /* DeviceKit in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		12086A2C28966DBE00003A0A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				12AA12B428A99FFB00EDF1D5 /* StoreKit.framework */,
+				12086A2F289670E600003A0A /* CoreGraphics.framework */,
+				12086A2D28966DBE00003A0A /* QuartzCore.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		12C4DAEF28B2FE700032082C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				12C4DAF028B2FE700032082C /* Products.plist */,
+				12C4DAF128B2FE700032082C /* Products.storekit */,
+				12C4DAF228B2FE700032082C /* Assets.xcassets */,
+				12C4DAF328B2FE700032082C /* Configuration.storekit */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		12C4DAF528B2FE700032082C /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				12C4DAF628B2FE700032082C /* RouletteAudio.swift */,
+				12C4DAF728B2FE700032082C /* Sounds */,
+			);
+			path = Audio;
+			sourceTree = "<group>";
+		};
+		12C4DAF728B2FE700032082C /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				12F1AD6128B33EE3002B0C2C /* fairy-glitter.mp3 */,
+				12F1AD5C28B31AE6002B0C2C /* button-click.mp3 */,
+				12F1AD5B28B31AE6002B0C2C /* magical-spell.mp3 */,
+				12C4DAF828B2FE700032082C /* crumple.mp3 */,
+				12C4DAF928B2FE700032082C /* torch-click.mp3 */,
+				12F1AD5F28B324E7002B0C2C /* button-click1.mp3 */,
+			);
+			path = Sounds;
+			sourceTree = "<group>";
+		};
+		12C4DAFA28B2FE700032082C /* IAPs */ = {
+			isa = PBXGroup;
+			children = (
+				12C4DAFB28B2FE700032082C /* FuelProductView.swift */,
+				12C4DAFC28B2FE700032082C /* StatusInfoView.swift */,
+				12C4DAFD28B2FE700032082C /* StoreView.swift */,
+				12C4DAFE28B2FE700032082C /* BuyButtonStyle.swift */,
+				12C4DAFF28B2FE700032082C /* SubscriptionsView.swift */,
+				12C4DB0028B2FE700032082C /* FuelSupplyView.swift */,
+				12C4DB0128B2FE700032082C /* ProductDetailView.swift */,
+				12C4DB0228B2FE700032082C /* StudioView.swift */,
+				12C4DB0328B2FE700032082C /* Store.swift */,
+				12C4DB0428B2FE700032082C /* ListCellView.swift */,
+				12C4DB0528B2FE700032082C /* FuelStoreView.swift */,
+			);
+			path = IAPs;
+			sourceTree = "<group>";
+		};
+		12C4DB0628B2FE700032082C /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				12C4DB0728B2FE700032082C /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		12E33AEE2854725D002E0F33 = {
+			isa = PBXGroup;
+			children = (
+				12C4DAF528B2FE700032082C /* Audio */,
+				12C4DAF428B2FE700032082C /* ContentView.swift */,
+				12C4DAFA28B2FE700032082C /* IAPs */,
+				12C4DAEC28B2FE700032082C /* Instrument.swift */,
+				12C4DB0628B2FE700032082C /* Preview Content */,
+				12C4DAEF28B2FE700032082C /* Resources */,
+				12C4DB0A28B2FE700032082C /* RouletteHistoryApp.swift */,
+				12C4DAEA28B2FE700032082C /* RouletteNumberTile.swift */,
+				12C4DB0B28B2FE700032082C /* RouletteTable.swift */,
+				12C4DB0828B2FE700032082C /* SheetView.swift */,
+				12C4DAED28B2FE700032082C /* Task+sleep.swift */,
+				12C4DAEE28B2FE700032082C /* View+OnLoad.swift */,
+				12C4DAEB28B2FE700032082C /* View+ScrollLock.swift */,
+				12C4DB0928B2FE700032082C /* ViewDidLoadModifier.swift */,
+				12E33AF82854725D002E0F33 /* Products */,
+				12086A2C28966DBE00003A0A /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		12E33AF82854725D002E0F33 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				12E33AF72854725D002E0F33 /* Roulette Magic.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		12E33AF62854725D002E0F33 /* Roulette Magic */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 12E33B052854725D002E0F33 /* Build configuration list for PBXNativeTarget "Roulette Magic" */;
+			buildPhases = (
+				12E33AF32854725D002E0F33 /* Sources */,
+				12E33AF42854725D002E0F33 /* Frameworks */,
+				12E33AF52854725D002E0F33 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Roulette Magic";
+			packageProductDependencies = (
+				126A1BF128B22591008763EE /* DeviceKit */,
+			);
+			productName = RouletteTracker;
+			productReference = 12E33AF72854725D002E0F33 /* Roulette Magic.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		12E33AEF2854725D002E0F33 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					12E33AF62854725D002E0F33 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 12E33AF22854725D002E0F33 /* Build configuration list for PBXProject "RouletteMagic" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 12E33AEE2854725D002E0F33;
+			packageReferences = (
+				126A1BF028B22590008763EE /* XCRemoteSwiftPackageReference "DeviceKit" */,
+			);
+			productRefGroup = 12E33AF82854725D002E0F33 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				12E33AF62854725D002E0F33 /* Roulette Magic */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		12E33AF52854725D002E0F33 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12C4DB2428B3018E0032082C /* Products.storekit in Resources */,
+				12F1AD6028B324E7002B0C2C /* button-click1.mp3 in Resources */,
+				12C4DB2528B301920032082C /* Configuration.storekit in Resources */,
+				12F1AD6228B33EE3002B0C2C /* fairy-glitter.mp3 in Resources */,
+				12F1AD5D28B31AE6002B0C2C /* magical-spell.mp3 in Resources */,
+				12F1AD5E28B31AE6002B0C2C /* button-click.mp3 in Resources */,
+				12C4DB2A28B304CF0032082C /* torch-click.mp3 in Resources */,
+				12C4DB2228B301830032082C /* Assets.xcassets in Resources */,
+				12C4DB2128B301770032082C /* Preview Assets.xcassets in Resources */,
+				12C4DB2328B3018A0032082C /* Products.plist in Resources */,
+				12C4DB2928B304CF0032082C /* crumple.mp3 in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		12E33AF32854725D002E0F33 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				12C4DB1E28B3016D0032082C /* BuyButtonStyle.swift in Sources */,
+				12C4DB1028B2FE700032082C /* Task+sleep.swift in Sources */,
+				12C4DB0E28B2FE700032082C /* View+ScrollLock.swift in Sources */,
+				12C4DB1228B2FE700032082C /* ContentView.swift in Sources */,
+				12C4DB1F28B3016D0032082C /* ListCellView.swift in Sources */,
+				12C4DB1A28B3016D0032082C /* SubscriptionsView.swift in Sources */,
+				12C4DB0D28B2FE700032082C /* SheetView.swift in Sources */,
+				12C4DB1628B3016D0032082C /* FuelSupplyView.swift in Sources */,
+				12C4DB1728B3016D0032082C /* ProductDetailView.swift in Sources */,
+				12C4DB1328B2FE700032082C /* Instrument.swift in Sources */,
+				12C4DB1B28B3016D0032082C /* FuelProductView.swift in Sources */,
+				12C4DB1928B3016D0032082C /* Store.swift in Sources */,
+				12C4DB1528B2FE700032082C /* ViewDidLoadModifier.swift in Sources */,
+				12C4DB0C28B2FE700032082C /* RouletteTable.swift in Sources */,
+				12C4DB2828B301F90032082C /* RouletteAudio.swift in Sources */,
+				12C4DB1D28B3016D0032082C /* FuelStoreView.swift in Sources */,
+				12C4DB1128B2FE700032082C /* RouletteHistoryApp.swift in Sources */,
+				12C4DB0F28B2FE700032082C /* View+OnLoad.swift in Sources */,
+				12C4DB1428B2FE700032082C /* RouletteNumberTile.swift in Sources */,
+				12C4DB1C28B3016D0032082C /* StudioView.swift in Sources */,
+				12C4DB2028B3016D0032082C /* StoreView.swift in Sources */,
+				12C4DB1828B3016D0032082C /* StatusInfoView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		12E33B032854725D002E0F33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		12E33B042854725D002E0F33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		12E33B062854725D002E0F33 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 648;
+				DEVELOPMENT_ASSET_PATHS = "\"Preview Content\"";
+				DEVELOPMENT_TEAM = UF5U48LL7C;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chappelle.roulettemagic;
+				PRODUCT_NAME = "Roulette Magic";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
+		12E33B072854725D002E0F33 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 648;
+				DEVELOPMENT_ASSET_PATHS = "\"Preview Content\"";
+				DEVELOPMENT_TEAM = UF5U48LL7C;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = NO;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationLandscapeLeft;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.1.4;
+				PRODUCT_BUNDLE_IDENTIFIER = com.chappelle.roulettemagic;
+				PRODUCT_NAME = "Roulette Magic";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		12E33AF22854725D002E0F33 /* Build configuration list for PBXProject "RouletteMagic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12E33B032854725D002E0F33 /* Debug */,
+				12E33B042854725D002E0F33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		12E33B052854725D002E0F33 /* Build configuration list for PBXNativeTarget "Roulette Magic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				12E33B062854725D002E0F33 /* Debug */,
+				12E33B072854725D002E0F33 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		126A1BF028B22590008763EE /* XCRemoteSwiftPackageReference "DeviceKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/devicekit/DeviceKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		126A1BF128B22591008763EE /* DeviceKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 126A1BF028B22590008763EE /* XCRemoteSwiftPackageReference "DeviceKit" */;
+			productName = DeviceKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 12E33AEF2854725D002E0F33 /* Project object */;
+}

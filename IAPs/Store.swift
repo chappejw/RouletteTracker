@@ -8,36 +8,6 @@
 import Foundation
 import StoreKit
 
-
-// Fetch products
-// Purchase product
-// Update UI / Fetch Product State
-
-//class ViewModel: ObservableObject {
-//
-//    var products: [Product] = []
-//    var request: SKProductsRequest!
-//
-//    func fetchProducts() {
-//        Task {
-////            let products = try await Product.request(with: ["com.chappelle.unlockRouletteGenie"])
-////            print(products)
-////            self.products = products
-//        }
-//    }
-//
-//    func purchase() {
-//        guard let product = products.first else { return }
-//
-//        Task {
-//            let result = try await product.purchase()
-//
-//        }
-//    }
-//}
-
-
-
 typealias Transaction = StoreKit.Transaction
 typealias RenewalInfo = StoreKit.Product.SubscriptionInfo.RenewalInfo
 typealias RenewalState = StoreKit.Product.SubscriptionInfo.RenewalState
@@ -60,12 +30,12 @@ public enum SubscriptionTier: Int, Comparable {
 
 class Store: ObservableObject {
 
-    @Published private(set) var cars: [Product]
-    @Published private(set) var fuel: [Product]
+    @Published private(set) var products: [Product]
+    @Published private(set) var consumables: [Product]
     @Published private(set) var subscriptions: [Product]
     @Published private(set) var nonRenewables: [Product]
     
-    @Published private(set) var purchasedCars: [Product] = []
+    @Published private(set) var purchasedProducts: [Product] = []
     @Published private(set) var purchasedNonRenewableSubscriptions: [Product] = []
     @Published private(set) var purchasedSubscriptions: [Product] = []
     @Published private(set) var subscriptionGroupStatus: RenewalState?
@@ -83,8 +53,8 @@ class Store: ObservableObject {
         }
 
         //Initialize empty products, and then do a product request asynchronously to fill them in.
-        cars = []
-        fuel = []
+        products = []
+        consumables = []
         subscriptions = []
         nonRenewables = []
 
@@ -130,7 +100,7 @@ class Store: ObservableObject {
             //Request products from the App Store using the identifiers that the Products.plist file defines.
             let storeProducts = try await Product.products(for: productIdToEmoji.keys)
 
-            var newCars: [Product] = []
+            var newProducts: [Product] = []
             var newSubscriptions: [Product] = []
             var newNonRenewables: [Product] = []
             var newFuel: [Product] = []
@@ -141,7 +111,7 @@ class Store: ObservableObject {
                 case .consumable:
                     newFuel.append(product)
                 case .nonConsumable:
-                    newCars.append(product)
+                    newProducts.append(product)
                 case .autoRenewable:
                     newSubscriptions.append(product)
                 case .nonRenewable:
@@ -153,10 +123,10 @@ class Store: ObservableObject {
             }
 
             //Sort each product category by price, lowest to highest, to update the store.
-            cars = sortByPrice(newCars)
+            products = sortByPrice(newProducts)
             subscriptions = sortByPrice(newSubscriptions)
             nonRenewables = sortByPrice(newNonRenewables)
-            fuel = sortByPrice(newFuel)
+            consumables = sortByPrice(newFuel)
         } catch {
             print("Failed product request from the App Store server: \(error)")
         }
@@ -192,7 +162,7 @@ class Store: ObservableObject {
         case .nonRenewable:
             return purchasedNonRenewableSubscriptions.contains(product)
         case .nonConsumable:
-            return purchasedCars.contains(product)
+            return purchasedProducts.contains(product)
         case .autoRenewable:
             return purchasedSubscriptions.contains(product)
         default:
@@ -214,7 +184,7 @@ class Store: ObservableObject {
 
     @MainActor
     func updateCustomerProductStatus() async {
-        var purchasedCars: [Product] = []
+        var purchasedProducts: [Product] = []
         var purchasedSubscriptions: [Product] = []
         var purchasedNonRenewableSubscriptions: [Product] = []
 
@@ -227,8 +197,8 @@ class Store: ObservableObject {
                 //Check the `productType` of the transaction and get the corresponding product from the store.
                 switch transaction.productType {
                 case .nonConsumable:
-                    if let car = cars.first(where: { $0.id == transaction.productID }) {
-                        purchasedCars.append(car)
+                    if let product = products.first(where: { $0.id == transaction.productID }) {
+                        purchasedProducts.append(product)
                     }
                 case .nonRenewable:
                     if let nonRenewable = nonRenewables.first(where: { $0.id == transaction.productID }),
@@ -259,7 +229,7 @@ class Store: ObservableObject {
         }
 
         //Update the store information with the purchased products.
-        self.purchasedCars = purchasedCars
+        self.purchasedProducts = purchasedProducts
         self.purchasedNonRenewableSubscriptions = purchasedNonRenewableSubscriptions
 
         //Update the store information with auto-renewable subscription products.

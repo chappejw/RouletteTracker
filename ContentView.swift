@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DeviceKit
 
 extension View {
     func multicolorGlow() -> some View {
@@ -37,6 +38,8 @@ struct ContentView: View {
     
     @State private var showingSheet = false
     
+    var device: Device
+    
     struct Defaults {
         static let tileWidth = 40.0
         static let tileHeight = 45.0
@@ -65,8 +68,51 @@ struct ContentView: View {
     let tableColor = Color.clear //Color(red: 0.0, green: 0.556, blue: 0.326)
     
     init() {
-        
+        let dev = Device.current
+        print(dev)
+        device = dev
     }
+    
+    private func hapticClick() {
+        let impactMed = UIImpactFeedbackGenerator(style: .heavy)
+        impactMed.impactOccurred()
+    }
+    
+    func numberHistoryWidth() -> CGFloat {
+        var width = 750.0
+        if device == .simulator(.iPhone6s)
+            || device == .simulator(.iPhone6sPlus)
+            || device == .simulator(.iPhone7)
+            || device == .simulator(.iPhone7Plus)
+            || device == .simulator(.iPhone8)
+            || device == .simulator(.iPhone8Plus)
+            || device == .simulator(.iPhoneX)
+            || device == .simulator(.iPhoneXS)
+            || device == .simulator(.iPhoneXSMax)
+            || device == .simulator(.iPhoneSE)
+            || device == .simulator(.iPhoneSE2)
+            || device == .simulator(.iPhoneSE3)
+            || device == .simulator(.iPhone12Mini)
+            || device == .simulator(.iPhone13Mini)
+            || device == .iPhone6s
+            || device == .iPhone6sPlus
+            || device == .iPhone7
+            || device == .iPhone7Plus
+            || device == .iPhone8
+            || device == .iPhone8Plus
+            || device == .iPhoneX
+            || device == .iPhoneXS
+            || device == .iPhoneXSMax
+            || device == .iPhoneSE
+            || device == .iPhoneSE2
+            || device == .iPhoneSE3
+            || device == .iPhone12Mini
+            || device == .iPhone13Mini {
+            width = 650.0
+        }
+        return width
+    }
+    
     
     var body: some View {
         VStack {
@@ -75,7 +121,12 @@ struct ContentView: View {
                 VStack(spacing: 0.0) {
                     Spacer()
                     Button {
-                        playSound(key: "torch-click")
+                        if rouletteTable.isStopped() {
+                            playSound(key: "fairy-glitter")
+                        } else {
+                            playSound(key: "torch-click")
+                            hapticClick()
+                        }
                         rouletteTable.updateCountsForNumber("0")
                     } label: {
                         RouletteNumberTile(numberTile: "0",
@@ -89,8 +140,13 @@ struct ContentView: View {
                             alignment: .center)
                     
                     Button {
+                        if rouletteTable.isStopped() {
+                            playSound(key: "fairy-glitter")
+                        } else {
+                            playSound(key: "torch-click")
+                            hapticClick()
+                        }
                         rouletteTable.updateCountsForNumber("00")
-                        playSound(key: "torch-click")
                     } label: {
                         RouletteNumberTile(numberTile: "00",
                                            numberCount: String(rouletteTable.getCountForNumber("00")),
@@ -108,8 +164,6 @@ struct ContentView: View {
                     Spacer()
                     Spacer()
                     Spacer()
-                    
-                    
                 }.frame(width: 40, height: 275)
                 
                 ScrollView {
@@ -118,7 +172,12 @@ struct ContentView: View {
                             ForEach(rouletteTable.first12, id: \.self) { item in
                                 Button {
                                     rouletteTable.updateCountsForNumber(item)
-                                    playSound(key: "torch-click")
+                                    if rouletteTable.isStopped() {
+                                        playSound(key: "fairy-glitter")
+                                    } else {
+                                        playSound(key: "torch-click")
+                                        hapticClick()
+                                    }
                                 } label: {
                                     RouletteNumberTile(numberTile: "\(item)",
                                                        numberCount: String(rouletteTable.getCountForNumber(item)),
@@ -146,7 +205,7 @@ struct ContentView: View {
                             .overlay {
                                 Text(String(rouletteTable.getCountForNumber("1st12")))
                                     .frame(width: Defaults.sectionWidth,
-                                           height:Defaults.section12Height+17.0,
+                                           height:Defaults.section12Height+22.0,
                                            alignment: .bottomTrailing)
                                     .shadow(color: .black,
                                             radius: Defaults.tileShadowRadius,
@@ -173,7 +232,7 @@ struct ContentView: View {
                                     Text(String(rouletteTable.getCountForNumber("1to18")))
                                         .padding(1.0)
                                         .frame(width: Defaults.fifty50Width,
-                                               height:Defaults.section12Height,
+                                               height:Defaults.section12Height+5.0,
                                                alignment: .bottomTrailing)
                                         .foregroundColor(.white)
                                 }
@@ -195,7 +254,7 @@ struct ContentView: View {
                                     Text(String(rouletteTable.getCountForNumber("EVEN")))
                                         .padding(1.0)
                                         .frame(width: Defaults.fifty50Width,
-                                               height:Defaults.section12Height,
+                                               height:Defaults.section12Height+5.0,
                                                alignment: .bottomTrailing)
                                         .foregroundColor(.white)
                                 }
@@ -212,17 +271,20 @@ struct ContentView: View {
                         LazyVGrid(columns: columns, spacing: 0) {
                             ForEach(rouletteTable.second12, id: \.self) { item in
                                 Button {
-                                    //rouletteTable.numberStats[item] = 0
                                     rouletteTable.updateCountsForNumber(item)
-                                    playSound(key: "torch-click")
+                                    if rouletteTable.isStopped() {
+                                        playSound(key: "fairy-glitter")
+                                    } else {
+                                        playSound(key: "torch-click")
+                                        hapticClick()
+                                    }
                                 } label: {
-                                    let r = RouletteNumberTile(numberTile: "\(item)",
-                                                               numberCount: String(rouletteTable.getCountForNumber(item)),
-                                                               background: rouletteTable.blacks.contains(item) ? .black : .red,
-                                                               tileWidth: Defaults.tileWidth,
-                                                               tileHeight: Defaults.tileHeight,
-                                                               magicNumber: rouletteTable.magicNumber)
-                                    r
+                                    RouletteNumberTile(numberTile: "\(item)",
+                                                       numberCount: String(rouletteTable.getCountForNumber(item)),
+                                                       background: rouletteTable.blacks.contains(item) ? .black : .red,
+                                                       tileWidth: Defaults.tileWidth,
+                                                       tileHeight: Defaults.tileHeight,
+                                                       magicNumber: rouletteTable.magicNumber)
                                 }.frame(width:Defaults.tileWidth, height: Defaults.tileHeight, alignment: .center)
                             }
                         }
@@ -242,7 +304,7 @@ struct ContentView: View {
                                 Text(String(rouletteTable.getCountForNumber("2nd12")))
                                     .padding(1.0)
                                     .frame(width: Defaults.sectionWidth,
-                                           height:Defaults.section12Height+17.0,
+                                           height:Defaults.section12Height+22.0,
                                            alignment: .bottomTrailing)
                                     .shadow(color: .black,
                                             radius: Defaults.tileShadowRadius,
@@ -266,7 +328,7 @@ struct ContentView: View {
                                     Text(String(rouletteTable.getCountForNumber("RED")))
                                         .padding(1.0)
                                         .frame(width: Defaults.fifty50Width,
-                                               height:Defaults.section12Height,
+                                               height:Defaults.section12Height+5.0,
                                                alignment: .bottomTrailing)
                                         .foregroundColor(.white)
                                 }
@@ -288,7 +350,7 @@ struct ContentView: View {
                                     Text(String(rouletteTable.getCountForNumber("BLACK")))
                                         .padding(1.0)
                                         .frame(width: Defaults.fifty50Width,
-                                               height:Defaults.section12Height,
+                                               height:Defaults.section12Height+5.0,
                                                alignment: .bottomTrailing)
                                         .foregroundColor(.white)
                                 }
@@ -305,9 +367,13 @@ struct ContentView: View {
                         LazyVGrid(columns: columns, spacing: 0) {
                             ForEach(rouletteTable.third12, id: \.self) { item in
                                 Button {
-                                    //rouletteTable.numberStats[item] = 0
                                     rouletteTable.updateCountsForNumber(item)
-                                    playSound(key: "torch-click")
+                                    if rouletteTable.isStopped() {
+                                        playSound(key: "fairy-glitter")
+                                    } else {
+                                        playSound(key: "torch-click")
+                                        hapticClick()
+                                    }
                                 } label: {
                                     RouletteNumberTile(numberTile: "\(item)",
                                                        numberCount: String(rouletteTable.getCountForNumber(item)),
@@ -334,7 +400,7 @@ struct ContentView: View {
                                 Text(String(rouletteTable.getCountForNumber("3rd12")))
                                     .padding(1.0)
                                     .frame(width: Defaults.sectionWidth,
-                                           height:Defaults.section12Height+17.0,
+                                           height:Defaults.section12Height+22.0,
                                            alignment: .bottomTrailing)
                                     .shadow(color: .black,
                                             radius: Defaults.tileShadowRadius,
@@ -358,7 +424,7 @@ struct ContentView: View {
                                     Text(String(rouletteTable.getCountForNumber("ODD")))
                                         .padding(1.0)
                                         .frame(width: Defaults.fifty50Width,
-                                               height:Defaults.section12Height,
+                                               height:Defaults.section12Height+5.0,
                                                alignment: .bottomTrailing)
                                         .foregroundColor(.white)
                                 }
@@ -378,7 +444,7 @@ struct ContentView: View {
                                     Text(String(rouletteTable.getCountForNumber("19to36")))
                                         .padding(1.0)
                                         .frame(width: Defaults.fifty50Width,
-                                               height: Defaults.section12Height,
+                                               height: Defaults.section12Height+5.0,
                                                alignment: .bottomTrailing)
                                         .foregroundColor(.white)
                                 }
@@ -388,7 +454,6 @@ struct ContentView: View {
                 .frame(width: Defaults.sectionWidth, height: Defaults.sectionHeight, alignment: .top)
                 .border(.black, width: 1.0)
                 .scrollEnabled(false)
-                
                 
                 VStack(alignment: .center, spacing: 0.0) {
                     
@@ -407,7 +472,7 @@ struct ContentView: View {
                             Text(String(rouletteTable.getCountForNumber("2to1_1")))
                                 .padding(1.0)
                                 .frame(width: Defaults.two2oneWidth,
-                                       height: Defaults.tileHeight,
+                                       height: Defaults.tileHeight+5.0,
                                        alignment: .bottomTrailing)
                                 .foregroundColor(.white)
                         }
@@ -427,7 +492,7 @@ struct ContentView: View {
                             Text(String(rouletteTable.getCountForNumber("2to1_2")))
                                 .padding(1.0)
                                 .frame(width: Defaults.two2oneWidth,
-                                       height: Defaults.tileHeight,
+                                       height: Defaults.tileHeight+5.0,
                                        alignment: .bottomTrailing)
                                 .foregroundColor(.white)
                         }
@@ -447,7 +512,7 @@ struct ContentView: View {
                             Text(String(rouletteTable.getCountForNumber("2to1_3")))
                                 .padding(1.0)
                                 .frame(width: Defaults.two2oneWidth,
-                                       height: Defaults.tileHeight,
+                                       height: Defaults.tileHeight+5.0,
                                        alignment: .bottomTrailing)
                                 .foregroundColor(.white)
                         }
@@ -466,105 +531,244 @@ struct ContentView: View {
                         Spacer()
                         VStack {
                             HStack {
+                                if device == .simulator(.iPhone6s)
+                                    || device == .simulator(.iPhone6sPlus)
+                                    || device == .simulator(.iPhone7)
+                                    || device == .simulator(.iPhone7Plus)
+                                    || device == .simulator(.iPhone8)
+                                    || device == .simulator(.iPhone8Plus)
+                                    || device == .simulator(.iPhoneX)
+                                    || device == .simulator(.iPhoneXS)
+                                    || device == .simulator(.iPhoneXSMax)
+                                    || device == .simulator(.iPhoneSE)
+                                    || device == .simulator(.iPhoneSE2)
+                                    || device == .simulator(.iPhoneSE3)
+                                    || device == .simulator(.iPhone12Mini)
+                                    || device == .simulator(.iPhone13Mini)
+                                    || device == .iPhone6s
+                                    || device == .iPhone6sPlus
+                                    || device == .iPhone7
+                                    || device == .iPhone7Plus
+                                    || device == .iPhone8
+                                    || device == .iPhone8Plus
+                                    || device == .iPhoneX
+                                    || device == .iPhoneXS
+                                    || device == .iPhoneXSMax
+                                    || device == .iPhoneSE
+                                    || device == .iPhoneSE2
+                                    || device == .iPhoneSE3
+                                    || device == .iPhone12Mini
+                                    || device == .iPhone13Mini {
+                                    
+                                } else {
+                                    Spacer()
+                                    Spacer()
+                                    Spacer()
+                                    Spacer()
+                                }
                                 Spacer()
-                                Spacer()
-                                Spacer()
-                                Spacer()
-                                Spacer()
-                                Image("vip")
+                                let vip = Image("vip")
                                     .resizable()
                                     .frame(width: 90.0, height: 55.0, alignment: .center)
                                     .aspectRatio(contentMode: .fill)
-                                    .shadow(color: .green, radius: 8.0, x: 5, y: 7)
-                                
+                                if !store.purchasedProducts.isEmpty {
+                                    vip.shadow(color: .green, radius: 8.0, x: 5, y: 7)
+                                } else {
+                                    vip.shadow(color: .red, radius: 8.0, x: 5, y: 7)
+                                }
                             }
                             Spacer()
                             HStack {
+                                if device == .simulator(.iPhone6s)
+                                    || device == .simulator(.iPhone6sPlus)
+                                    || device == .simulator(.iPhone7)
+                                    || device == .simulator(.iPhone7Plus)
+                                    || device == .simulator(.iPhone8)
+                                    || device == .simulator(.iPhone8Plus)
+                                    || device == .simulator(.iPhoneX)
+                                    || device == .simulator(.iPhoneXS)
+                                    || device == .simulator(.iPhoneXSMax)
+                                    || device == .simulator(.iPhoneSE)
+                                    || device == .simulator(.iPhoneSE2)
+                                    || device == .simulator(.iPhoneSE3)
+                                    || device == .simulator(.iPhone12Mini)
+                                    || device == .simulator(.iPhone13Mini)
+                                    || device == .iPhone6s
+                                    || device == .iPhone6sPlus
+                                    || device == .iPhone7
+                                    || device == .iPhone7Plus
+                                    || device == .iPhone8
+                                    || device == .iPhone8Plus
+                                    || device == .iPhoneX
+                                    || device == .iPhoneXS
+                                    || device == .iPhoneXSMax
+                                    || device == .iPhoneSE
+                                    || device == .iPhoneSE2
+                                    || device == .iPhoneSE3
+                                    || device == .iPhone12Mini
+                                    || device == .iPhone13Mini {
+                                    
+                                } else {
+                                    Spacer()
+                                    Spacer()
+                                    Spacer()
+                                    Spacer()
+                                }
                                 Spacer()
                                 Spacer()
                                 Spacer()
-                                Spacer()
-                                Spacer()
-                                Spacer()
-                                Spacer()
-                                Button(action: {
-                                    showingSheet.toggle()
-                                }) {
-                                    Text("Unlock?")
-                                        .font(.title3)
-                                        .bold()
-                                        .lineLimit(2)
-                                        .foregroundColor(.white)
-                                        .frame(width: 90, height: 50)
-                                        .background(tableColor)
-                                        .border(.yellow, width: 5.0)
-                                        .cornerRadius(10)
-                                        .shadow(color: .green, radius: 8.0, x: 5, y: 7)
-                                }.sheet(isPresented: $showingSheet) {
-                                    MyCarsView()
+                                if store.purchasedProducts.isEmpty {
+                                    Button(action: {
+                                        showingSheet.toggle()
+                                        playSound(key: "magical-spell")
+                                        hapticClick()
+                                    }) {
+                                        Text("Unlock?")
+                                            .font(.title3)
+                                            .bold()
+                                            .lineLimit(2)
+                                            .foregroundColor(.white)
+                                            .frame(width: 90, height: 50)
+                                            .background(tableColor)
+                                            .border(.yellow, width: 5.0)
+                                            .cornerRadius(10)
+                                            
+                                    }.sheet(isPresented: $showingSheet) {
+                                        StudioView()
+                                    }.shadow(color: .green, radius: 8.0, x: 5, y: 7)
                                 }
                                 Spacer()
                                 Spacer()
                             }
                             Spacer()
                             Spacer()
+                            Spacer()
+                            Spacer()
+                            Spacer()
                             HStack(alignment: .center, spacing: 5.0, content: {
-                                Spacer()
-                                Spacer()
-                                Spacer()
-                                Spacer()
-                                Spacer()
-                                Spacer()
-                                Spacer()
-                                Text(String(format: "%.2f", rouletteTable.timerValue))
-                                    .fontWeight(.bold)
-                                    .frame(width: 80, height: 20, alignment: .leading)
-                                    .shadow(color: .black, radius: 3.0, x: 2, y: 2)
-                                    .shadow(color: .red, radius: 8.0, x: 5, y: 7)
-                                    .font(.title)
-                                    .foregroundColor(.pink)
+                                if device == .simulator(.iPhone6s)
+                                    || device == .simulator(.iPhone6sPlus)
+                                    || device == .simulator(.iPhone7)
+                                    || device == .simulator(.iPhone7Plus)
+                                    || device == .simulator(.iPhone8)
+                                    || device == .simulator(.iPhone8Plus)
+                                    || device == .simulator(.iPhoneX)
+                                    || device == .simulator(.iPhoneXS)
+                                    || device == .simulator(.iPhoneXSMax)
+                                    || device == .simulator(.iPhoneSE)
+                                    || device == .simulator(.iPhoneSE2)
+                                    || device == .simulator(.iPhoneSE3)
+                                    || device == .simulator(.iPhone12Mini)
+                                    || device == .simulator(.iPhone13Mini)
+                                    || device == .iPhone6s
+                                    || device == .iPhone6sPlus
+                                    || device == .iPhone7
+                                    || device == .iPhone7Plus
+                                    || device == .iPhone8
+                                    || device == .iPhone8Plus
+                                    || device == .iPhoneX
+                                    || device == .iPhoneXS
+                                    || device == .iPhoneXSMax
+                                    || device == .iPhoneSE
+                                    || device == .iPhoneSE2
+                                    || device == .iPhoneSE3
+                                    || device == .iPhone12Mini
+                                    || device == .iPhone13Mini {
+                                    
+                                } else {
+                                    Spacer()
+                                    Spacer()
+                                    Spacer()
+                                    Spacer()
+                                    Spacer()
+                                    Spacer()
+                                }
+//                                Spacer()
+                                if !store.purchasedProducts.isEmpty {
+                                    Text(String(format: "%.2f", rouletteTable.timerValue))
+                                        .fontWeight(.bold)
+                                        .frame(width: 80, height: 20, alignment: .leading)
+                                        .shadow(color: .black, radius: 3.0, x: 2, y: 2)
+                                        .shadow(color: .red, radius: 8.0, x: 5, y: 7)
+                                        .font(.title)
+                                        .foregroundColor(.pink)
+                                }
                                 Spacer()
                                 Spacer()
                             })
                             Spacer()
-                            Spacer()
+//                            Spacer()
                         }
                         
                     }
                     HStack(alignment: .center, spacing: 11, content: {
-                        Spacer()
-                        Spacer()
-                        Spacer()
-                        Spacer()
-                        Spacer()
-                        
-                        Button {
-                            playSound(key: "torch-click")
-                            switch rouletteTable.tableState {
-                            case TableState.clearTable.rawValue:
-                                rouletteTable.startSpin()
-                            case TableState.started.rawValue:
-                                rouletteTable.stopSpin()
-                            case TableState.stopped.rawValue:
-                                rouletteTable.clearTableState()
-                            default:
-                                break
+                        if device == .simulator(.iPhone6s)
+                            || device == .simulator(.iPhone6sPlus)
+                            || device == .simulator(.iPhone7)
+                            || device == .simulator(.iPhone7Plus)
+                            || device == .simulator(.iPhone8)
+                            || device == .simulator(.iPhone8Plus)
+                            || device == .simulator(.iPhoneX)
+                            || device == .simulator(.iPhoneXS)
+                            || device == .simulator(.iPhoneXSMax)
+                            || device == .simulator(.iPhoneSE)
+                            || device == .simulator(.iPhoneSE2)
+                            || device == .simulator(.iPhoneSE3)
+                            || device == .simulator(.iPhone12Mini)
+                            || device == .simulator(.iPhone13Mini)
+                            || device == .iPhone6s
+                            || device == .iPhone6sPlus
+                            || device == .iPhone7
+                            || device == .iPhone7Plus
+                            || device == .iPhone8
+                            || device == .iPhone8Plus
+                            || device == .iPhoneX
+                            || device == .iPhoneXS
+                            || device == .iPhoneXSMax
+                            || device == .iPhoneSE
+                            || device == .iPhoneSE2
+                            || device == .iPhoneSE3
+                            || device == .iPhone12Mini
+                            || device == .iPhone13Mini {
+                            
+                        } else {
+                            Spacer()
+                            Spacer()
+                            Spacer()
+                            Spacer()
+//                            Spacer()
+                            Spacer()
+                        }
+                        if !store.purchasedProducts.isEmpty {
+                            Button {
+                                playSound(key: "button-click")
+                                hapticClick()
+                                switch rouletteTable.tableState {
+                                case TableState.clearTable.rawValue:
+                                    rouletteTable.startSpin()
+                                case TableState.started.rawValue:
+                                    rouletteTable.stopSpin()
+                                case TableState.stopped.rawValue:
+                                    rouletteTable.clearTableState()
+                                default:
+                                    break
+                                }
+                            } label: {
+                                Image("startButton")
                             }
-                        } label: {
-                            Image("startButton")
+                            .frame(width:Defaults.magicButtonWidth, height: Defaults.magicButtonHeight, alignment: .center)
+                            .cornerRadius(Defaults.magicButtonWidth/2.0)
+                            .clipShape(Circle())
+                            .overlay {
+                                Text("?")
+                                    .font(.title)
+                                    .bold()
+                                    .padding(0)
+                                    .foregroundColor(.black)
+                            }
+                            .shadow(color: .black, radius: 3, x: 2, y: 3)
+                            .shadow(color: .green, radius: 8, x: 4, y: 7)
                         }
-                        .frame(width:Defaults.magicButtonWidth, height: Defaults.magicButtonHeight, alignment: .center)
-                        .cornerRadius(Defaults.magicButtonWidth/2.0)
-                        .clipShape(Circle())
-                        .overlay {
-                            Text("?")
-                                .font(.title)
-                                .bold()
-                                .padding(0)
-                                .foregroundColor(.black)
-                        }
-                        .shadow(color: .black, radius: 3, x: 2, y: 3)
-                        .shadow(color: .green, radius: 8, x: 4, y: 7)
                         Spacer()
                         Spacer()
                     })
@@ -585,7 +789,10 @@ struct ContentView: View {
                     .cornerRadius(50.0)
                     .foregroundColor(.black)
                     .shadow(color: .black, radius: 1.0, x: 1.0, y: 1.0)
-                
+                Spacer()
+                Spacer()
+                Spacer()
+                Spacer()
                 Button("Undo") {
                     rouletteTable.undo()
                     playSound(key: "torch-click")
@@ -596,28 +803,10 @@ struct ContentView: View {
                     .foregroundColor(.black)
                     .shadow(color: .black, radius: 1.0, x: 1.0, y: 1.0)
                 
-                Button("Coloring") {
-                    
-                }.frame(width: Defaults.buttonWidth, height: Defaults.buttonHeight, alignment: .center)
-                    .border(.black, width: 0.5)
-                    .background(.gray)
-                    .cornerRadius(50.0)
-                    .foregroundColor(.black)
-                    .shadow(color: .black, radius: 1.0, x: 1.0, y: 1.0)
-                
-                Button("Extra") {
-                    
-                }.frame(width: Defaults.buttonWidth, height: Defaults.buttonHeight, alignment: .center)
-                    .border(.black, width: 0.5)
-                    .background(.blue)
-                    .cornerRadius(50.0)
-                    .foregroundColor(.black)
-                    .shadow(color: .black, radius: 1.0, x: 1.0, y: 1.0)
-                
+//                Spacer()
+//                Spacer()
                 Spacer()
-                Spacer()
-                Spacer()
-                Spacer()
+//                Spacer()
             }.background(tableColor)
             
             
@@ -649,7 +838,7 @@ struct ContentView: View {
                 //                .onAppear(perform: {
                 //
                 //                })
-                .frame(width: 750.0, height: 30.0, alignment: .leading)
+                .frame(width: numberHistoryWidth(), height: 30.0, alignment: .leading)
                 .border(.black, width: 2.0)
             }
             .shadow(color: .black,
@@ -675,9 +864,13 @@ struct Previews_ContentView_Previews: PreviewProvider {
         ContentView()
             .previewLayout(.device)
             .environment(\.sizeCategory, .medium)
-            .previewDevice("iPhone 11")
+            .previewDevice("iPhone SE3")
             .preferredColorScheme(.dark)
             .previewInterfaceOrientation(.landscapeRight)
-            .background(Color(red: 0.0, green: 0.556, blue: 0.326))
+            .background(Image("background")
+                .resizable()
+                .aspectRatio(UIScreen.main.bounds.size, contentMode: .fill )
+                .clipped())
+            .edgesIgnoringSafeArea( .vertical )
     }
 }

@@ -13,21 +13,21 @@ struct StoreView: View {
 
     var body: some View {
         List {
-            Section("Cars") {
-                ForEach(store.cars) { car in
-                    ListCellView(product: car)
+            Section("In App Purchases") {
+                ForEach(store.products) { product in
+                    ListCellView(product: product)
                 }
             }
             .listStyle(GroupedListStyle())
 
-            SubscriptionsView()
-
-            Section("Navigation: Non-Renewing Subscription") {
-                ForEach(store.nonRenewables) { product in
-                    ListCellView(product: product, purchasingEnabled: store.purchasedSubscriptions.isEmpty)
-                }
-            }
-            .listStyle(GroupedListStyle())
+//            SubscriptionsView()
+//
+//            Section("Navigation: Non-Renewing Subscription") {
+//                ForEach(store.nonRenewables) { product in
+//                    ListCellView(product: product, purchasingEnabled: store.purchasedSubscriptions.isEmpty)
+//                }
+//            }
+//            .listStyle(GroupedListStyle())
 
             Button("Restore Purchases", action: {
                 Task {
@@ -38,7 +38,7 @@ struct StoreView: View {
             })
 
         }
-        .navigationTitle("Shop")
+        .navigationTitle("Magic Shop")
     }
 }
 
