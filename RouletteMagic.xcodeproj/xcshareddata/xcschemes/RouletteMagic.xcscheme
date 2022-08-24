@@ -60,6 +60,16 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "12E33AF62854725D002E0F33"
+            BuildableName = "Roulette Magic.app"
+            BlueprintName = "Roulette Magic"
+            ReferencedContainer = "container:RouletteMagic.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

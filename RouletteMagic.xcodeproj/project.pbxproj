@@ -34,7 +34,6 @@
 		12C4DB2228B301830032082C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 12C4DAF228B2FE700032082C /* Assets.xcassets */; };
 		12C4DB2328B3018A0032082C /* Products.plist in Resources */ = {isa = PBXBuildFile; fileRef = 12C4DAF028B2FE700032082C /* Products.plist */; };
 		12C4DB2428B3018E0032082C /* Products.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 12C4DAF128B2FE700032082C /* Products.storekit */; };
-		12C4DB2528B301920032082C /* Configuration.storekit in Resources */ = {isa = PBXBuildFile; fileRef = 12C4DAF328B2FE700032082C /* Configuration.storekit */; };
 		12C4DB2828B301F90032082C /* RouletteAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12C4DAF628B2FE700032082C /* RouletteAudio.swift */; };
 		12C4DB2928B304CF0032082C /* crumple.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 12C4DAF828B2FE700032082C /* crumple.mp3 */; };
 		12C4DB2A28B304CF0032082C /* torch-click.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 12C4DAF928B2FE700032082C /* torch-click.mp3 */; };
@@ -56,7 +55,6 @@
 		12C4DAF028B2FE700032082C /* Products.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Products.plist; sourceTree = "<group>"; };
 		12C4DAF128B2FE700032082C /* Products.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Products.storekit; sourceTree = "<group>"; };
 		12C4DAF228B2FE700032082C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		12C4DAF328B2FE700032082C /* Configuration.storekit */ = {isa = PBXFileReference; lastKnownFileType = text; path = Configuration.storekit; sourceTree = "<group>"; };
 		12C4DAF428B2FE700032082C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		12C4DAF628B2FE700032082C /* RouletteAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouletteAudio.swift; sourceTree = "<group>"; };
 		12C4DAF828B2FE700032082C /* crumple.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = crumple.mp3; sourceTree = "<group>"; };
@@ -113,7 +111,6 @@
 				12C4DAF028B2FE700032082C /* Products.plist */,
 				12C4DAF128B2FE700032082C /* Products.storekit */,
 				12C4DAF228B2FE700032082C /* Assets.xcassets */,
-				12C4DAF328B2FE700032082C /* Configuration.storekit */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -262,7 +259,6 @@
 			files = (
 				12C4DB2428B3018E0032082C /* Products.storekit in Resources */,
 				12F1AD6028B324E7002B0C2C /* button-click1.mp3 in Resources */,
-				12C4DB2528B301920032082C /* Configuration.storekit in Resources */,
 				12F1AD6228B33EE3002B0C2C /* fairy-glitter.mp3 in Resources */,
 				12F1AD5D28B31AE6002B0C2C /* magical-spell.mp3 in Resources */,
 				12F1AD5E28B31AE6002B0C2C /* button-click.mp3 in Resources */,
@@ -429,7 +425,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 648;
+				CURRENT_PROJECT_VERSION = 649;
 				DEVELOPMENT_ASSET_PATHS = "\"Preview Content\"";
 				DEVELOPMENT_TEAM = UF5U48LL7C;
 				ENABLE_PREVIEWS = YES;
@@ -460,7 +456,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 648;
+				CURRENT_PROJECT_VERSION = 649;
 				DEVELOPMENT_ASSET_PATHS = "\"Preview Content\"";
 				DEVELOPMENT_TEAM = UF5U48LL7C;
 				ENABLE_PREVIEWS = YES;
