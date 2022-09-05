@@ -27,11 +27,11 @@ struct RouletteNumberTile: View, Hashable {
         HStack {
             
             Text(numberTile)
-                .fontWeight(.bold)
+                .fontWeight(.medium)
                 .frame(width:tileWidth, height: tileHeight, alignment: .center)
                 .background(background)
                 .foregroundColor(.white)
-                .font(.title2)
+//                .font(.title3)
                 .rotationEffect(Angle(degrees: -90))
                 .clipShape(Circle())
                 .overlay {
@@ -49,7 +49,7 @@ struct RouletteNumberTile: View, Hashable {
                                        alignment: .center)
                                 .background(background)
                                 .foregroundColor(.white)
-                                .font(.title2)
+//                                .font(.title3)
                                 .rotationEffect(Angle(degrees: -90))
                                 .clipShape(Circle())
                             
@@ -61,6 +61,7 @@ struct RouletteNumberTile: View, Hashable {
                 }
                 .overlay {
                     Text(numberCount)
+//                        .fontWeight(.medium)
                         .frame(width: tileWidth, height:tileHeight+5.0, alignment: .bottomTrailing)
                         .padding(0.0)
                         .foregroundColor(.white)

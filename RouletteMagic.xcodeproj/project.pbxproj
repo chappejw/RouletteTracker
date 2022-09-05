@@ -140,6 +140,7 @@
 		12C4DAFA28B2FE700032082C /* IAPs */ = {
 			isa = PBXGroup;
 			children = (
+				12C4DB0328B2FE700032082C /* Store.swift */,
 				12C4DAFB28B2FE700032082C /* FuelProductView.swift */,
 				12C4DAFC28B2FE700032082C /* StatusInfoView.swift */,
 				12C4DAFD28B2FE700032082C /* StoreView.swift */,
@@ -148,7 +149,6 @@
 				12C4DB0028B2FE700032082C /* FuelSupplyView.swift */,
 				12C4DB0128B2FE700032082C /* ProductDetailView.swift */,
 				12C4DB0228B2FE700032082C /* StudioView.swift */,
-				12C4DB0328B2FE700032082C /* Store.swift */,
 				12C4DB0428B2FE700032082C /* ListCellView.swift */,
 				12C4DB0528B2FE700032082C /* FuelStoreView.swift */,
 			);

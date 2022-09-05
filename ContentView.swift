@@ -37,15 +37,15 @@ struct ContentView: View {
     @StateObject var store = Store()
     
     @State private var showingSheet = false
-    
+    @State private var isPurchased = false
     var device: Device
     
     struct Defaults {
-        static let tileWidth = 40.0
-        static let tileHeight = 45.0
-        static let sectionWidth = 166.0
-        static let sectionHeight = 250.0
-        static let two2oneWidth = 80.0
+        static let tileWidth = 33.0
+        static let tileHeight = 33.0
+        static let sectionWidth = 138.0
+        static let sectionHeight = 215.0
+        static let two2oneWidth = 70.0
         static let magicButtonWidth = 50.0
         static let magicButtonHeight = 50.0
         static let two2oneHeight = 55.0
@@ -62,7 +62,7 @@ struct ContentView: View {
     }
     
     let columns = [
-        GridItem(.adaptive(minimum: 33, maximum: 33))
+        GridItem(.adaptive(minimum: 26, maximum: 26))
     ]
     
     let tableColor = Color.clear //Color(red: 0.0, green: 0.556, blue: 0.326)
@@ -72,6 +72,10 @@ struct ContentView: View {
         print(dev)
         device = dev
     }
+    
+//    func didInAppPurchase() {
+//        isPurchased = true
+//    }
     
     private func hapticClick() {
         let impactMed = UIImpactFeedbackGenerator(style: .heavy)
@@ -248,7 +252,7 @@ struct ContentView: View {
                                         y: 1)
                                 .border(.black, width: 1.0)
                                 .background(tableColor)
-                                .font(.title2)
+                                .font(.title3)
                                 .foregroundColor(.white)
                                 .overlay {
                                     Text(String(rouletteTable.getCountForNumber("EVEN")))
@@ -259,7 +263,7 @@ struct ContentView: View {
                                         .foregroundColor(.white)
                                 }
                             
-                        }
+                        }.border(.black, width: 1.0)
                     }
                 }
                 .frame(width: Defaults.sectionWidth, height: Defaults.sectionHeight, alignment: .top)
@@ -323,7 +327,7 @@ struct ContentView: View {
                                 .border(.black, width: 1.0)
                                 .background(tableColor)
                                 .foregroundColor(.red)
-                                .font(.title2)
+                                .font(.title3)
                                 .overlay {
                                     Text(String(rouletteTable.getCountForNumber("RED")))
                                         .padding(1.0)
@@ -345,7 +349,7 @@ struct ContentView: View {
                                 .border(.black, width: 1.0)
                                 .background(tableColor)
                                 .foregroundColor(.black)
-                                .font(.title2)
+                                .font(.title3)
                                 .overlay {
                                     Text(String(rouletteTable.getCountForNumber("BLACK")))
                                         .padding(1.0)
@@ -355,7 +359,7 @@ struct ContentView: View {
                                         .foregroundColor(.white)
                                 }
                             
-                        }
+                        }.border(.black, width: 1.0)
                     }
                 }
                 .frame(width: Defaults.sectionWidth, height: Defaults.sectionHeight, alignment: .top)
@@ -419,7 +423,7 @@ struct ContentView: View {
                                 .border(.black, width: 1.0)
                                 .background(tableColor)
                                 .foregroundColor(.white)
-                                .font(.title2)
+                                .font(.title3)
                                 .overlay {
                                     Text(String(rouletteTable.getCountForNumber("ODD")))
                                         .padding(1.0)
@@ -448,7 +452,7 @@ struct ContentView: View {
                                                alignment: .bottomTrailing)
                                         .foregroundColor(.white)
                                 }
-                        }
+                        }.border(.black, width: 1.0)
                     }
                 }
                 .frame(width: Defaults.sectionWidth, height: Defaults.sectionHeight, alignment: .top)
@@ -569,7 +573,7 @@ struct ContentView: View {
                                 Spacer()
                                 let vip = Image("vip")
                                     .resizable()
-                                    .frame(width: 90.0, height: 55.0, alignment: .center)
+                                    .frame(width: 70.0, height: 40.0, alignment: .center)
                                     .aspectRatio(contentMode: .fill)
                                 if !store.purchasedProducts.isEmpty {
                                     vip.shadow(color: .green, radius: 8.0, x: 5, y: 7)
@@ -617,25 +621,30 @@ struct ContentView: View {
                                 Spacer()
                                 Spacer()
                                 Spacer()
-                                if store.purchasedProducts.isEmpty {
+                                if !store.isPurchased {
                                     Button(action: {
                                         showingSheet.toggle()
                                         playSound(key: "magical-spell")
                                         hapticClick()
                                     }) {
                                         Text("Unlock?")
-                                            .font(.title3)
+                                            .font(.caption)
                                             .bold()
                                             .lineLimit(2)
                                             .foregroundColor(.white)
-                                            .frame(width: 90, height: 50)
+                                            .frame(width: 70, height: 40)
                                             .background(tableColor)
                                             .border(.yellow, width: 5.0)
                                             .cornerRadius(10)
                                             
                                     }.sheet(isPresented: $showingSheet) {
-                                        StudioView()
+                                        StudioView(store: store)
                                     }.shadow(color: .green, radius: 8.0, x: 5, y: 7)
+                                        .onAppear {
+//                                            Task {
+//                                                isPurchased = (try? await store.isPurchased(product)) ?? false
+//                                            }
+                                        }
                                 }
                                 Spacer()
                                 Spacer()
@@ -684,7 +693,7 @@ struct ContentView: View {
                                     Spacer()
                                 }
 //                                Spacer()
-                                if !store.purchasedProducts.isEmpty {
+                                if store.isPurchased {
                                     Text(String(format: "%.2f", rouletteTable.timerValue))
                                         .fontWeight(.bold)
                                         .frame(width: 80, height: 20, alignment: .leading)
@@ -739,7 +748,7 @@ struct ContentView: View {
 //                            Spacer()
                             Spacer()
                         }
-                        if !store.purchasedProducts.isEmpty {
+                        if store.isPurchased {
                             Button {
                                 playSound(key: "button-click")
                                 hapticClick()
@@ -864,7 +873,7 @@ struct Previews_ContentView_Previews: PreviewProvider {
         ContentView()
             .previewLayout(.device)
             .environment(\.sizeCategory, .medium)
-            .previewDevice("iPhone SE3")
+            .previewDevice("iPhone SE")
             .preferredColorScheme(.dark)
             .previewInterfaceOrientation(.landscapeRight)
             .background(Image("background")

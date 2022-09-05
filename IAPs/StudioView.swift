@@ -9,14 +9,14 @@ import SwiftUI
 import StoreKit
 
 struct StudioView: View {
-    @StateObject var store: Store = Store()
+    @StateObject var store: Store
     @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
     
     var body: some View {
         ZStack {
             HStack {
                 NavigationView {
-                    if store.purchasedProducts.isEmpty && store.purchasedNonRenewableSubscriptions.isEmpty && store.purchasedSubscriptions.isEmpty {
+                    if !store.isPurchased {
                         VStack {
                             Spacer()
                             Spacer()
@@ -62,12 +62,12 @@ struct StudioView: View {
                     } else {
                         List {
                             Section("My Super Powers") {
-                                if !store.purchasedProducts.isEmpty {
+                                if store.isPurchased {
                                     ForEach(store.purchasedProducts) { product in
 //                                        NavigationLink {
 //                                            ProductDetailView(product: product)
 //                                        } label: {
-                                        ListCellView(product: product, purchasingEnabled: true)
+                                        ListCellView(product: product, purchasingEnabled: false)
 //                                        }
                                     }
                                 } else {

@@ -39,6 +39,7 @@ class Store: ObservableObject {
     @Published private(set) var purchasedNonRenewableSubscriptions: [Product] = []
     @Published private(set) var purchasedSubscriptions: [Product] = []
     @Published private(set) var subscriptionGroupStatus: RenewalState?
+    @Published var isPurchased: Bool = false
     
     var updateListenerTask: Task<Void, Error>? = nil
 
@@ -199,6 +200,7 @@ class Store: ObservableObject {
                 case .nonConsumable:
                     if let product = products.first(where: { $0.id == transaction.productID }) {
                         purchasedProducts.append(product)
+                        isPurchased = true
                     }
                 case .nonRenewable:
                     if let nonRenewable = nonRenewables.first(where: { $0.id == transaction.productID }),
